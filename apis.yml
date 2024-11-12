@@ -11,6 +11,8 @@ apis:
       - url: properties/lufthansa-openapi.yml
         type: OpenAPI
     description: This API provides Lufthansa's flight schedule information.
+    tags:
+      - Airlines
 name: Lufthansa
 tags:
   - Airlines
