@@ -5,12 +5,12 @@ apis:
     name: Lufthansa Flight API
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
-    description: This API provides Lufthansa's flight schedule information.
     properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/io-docs
-      - type: OpenAPI
-        url: properties/lufthansa-openapi.yml      
+      - url: https://developer.lufthansa.com/io-docs
+        type: Documentation
+      - url: properties/lufthansa-openapi.yml
+        type: OpenAPI
+    description: This API provides Lufthansa's flight schedule information.
 name: Lufthansa
 tags:
   - Airlines
@@ -27,4 +27,4 @@ description: >-
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
-specificationVersion: '0.16'
+specificationVersion: '0.19'
