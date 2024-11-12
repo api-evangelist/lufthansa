@@ -16,8 +16,10 @@ image: >-
 created: 2024/7/2
 modified: '2024-11-11'
 description: >-
-  This API provides Lufthansa's flight schedule information. ~
-  https://developer.lufthansa.com/io-docs
+  Deutsche Lufthansa AG, or simply Lufthansa, is the flag carrier of Germany.
+  When combined with its subsidiaries, it ranks second in Europe by passengers
+  carried, as well as largest in Europe and fourth largest in the world by
+  revenue.
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
