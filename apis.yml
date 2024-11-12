@@ -10,7 +10,8 @@ apis:
       https://developer.lufthansa.com/io-docs
 name: Lufthansa
 tags:
-  - Bookmark
+  - Airlines
+  - Travel
 image: >-
   https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/lufthansa-developer-center-io-docs.png
 created: 2024/7/2
