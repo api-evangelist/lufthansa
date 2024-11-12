@@ -2,12 +2,15 @@ aid: lufthansa
 url: https://example.com/apis/lufthansa-developer-center-io-docs.yml
 apis:
   - aid: lufthansa:lufthansa
-    name: Lufthansa Developer Center I/O Docs
+    name: Lufthansa Flight API
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com/io-docs
-    description: >-
-      This API provides Lufthansa's flight schedule information. ~
-      https://developer.lufthansa.com/io-docs
+    humanURL: https://developer.lufthansa.com
+    description: This API provides Lufthansa's flight schedule information.
+    properties:
+      - type: Documentation
+        url: https://developer.lufthansa.com/io-docs
+      - type: OpenAPI
+        url: properties/lufthansa-openapi.yml      
 name: Lufthansa
 tags:
   - Airlines

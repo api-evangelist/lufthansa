@@ -1,0 +1,969 @@
+openapi: 3.0.1
+info:
+  title: LH Public API
+  description: ""
+  license:
+    name: LH
+    url: https://developer.lufthansa.com
+  version: "1.0"
+servers:
+- url: https://api.lufthansa.com/v1
+paths:
+  /references/countries/{countryCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Countries
+      description: List all countries or one specific country. It is possible to request
+        the response in a specific language.
+      operationId: ReferencesCountriesByCountryCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: path
+        description: 2-letter ISO 3166-1 country code
+        required: true
+        schema:
+          type: string
+          default: DK
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+          default: "20"
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: "0"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/cities/{cityCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Cities
+      description: List all cities or one specific city. It is possible to request
+        the response in a specific language.
+      operationId: ReferencesCitiesByCityCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: cityCode
+        in: path
+        description: 3-letter IATA city code
+        required: true
+        schema:
+          type: string
+          default: BER
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+          default: "20"
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: "0"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airports/{airportCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Airports
+      description: List all airports or one specific airport. All airports response
+        is very large. It is possible to request the response in a specific language.
+      operationId: ReferencesAirportsByAirportCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: airportCode
+        in: path
+        description: 3-letter IATA airport code
+        required: true
+        schema:
+          type: string
+          default: TXL
+      - name: lang
+        in: query
+        description: 2-letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+          default: "20"
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: "0"
+      - name: LHoperated
+        in: query
+        description: "Restrict the results to locations with flights operated by LH\
+          \ (false=0, true=1)"
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirportResponse'
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airports/nearest/{latitude},{longitude}:
+    get:
+      tags:
+      - Reference Data
+      summary: Nearest Airports
+      description: "List the 5 closest airports to the given latitude and longitude,\
+        \ irrespective of the radius of the reference point."
+      operationId: ReferencesAirportsNearestByLatitudeAndLongitudeGet
+      parameters:
+      - name: latitude
+        in: path
+        description: Latitude in decimal format to at most 3 decimal places
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: longitude
+        in: path
+        description: Longitude in decimal format to at most 3 decimal places
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airlines/{airlineCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Airlines
+      description: List all airlines or one specific airline.
+      operationId: ReferencesAirlinesByAirlineCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: airlineCode
+        in: path
+        description: 2-character IATA airline/carrier code
+        required: true
+        schema:
+          type: string
+          default: LH
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+          default: "20"
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: "0"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/aircraft/{aircraftCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Aircraft
+      description: List all aircraft types or one specific aircraft type.
+      operationId: ReferencesAircraftByAircraftCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: aircraftCode
+        in: path
+        description: 3-character IATA aircraft code
+        required: true
+        schema:
+          type: string
+          default: 33P
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+          default: "20"
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: "0"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}:
+    get:
+      tags:
+      - Offers
+      summary: Seat Maps
+      description: Cabin layout and seat characteristics.
+      operationId: OffersSeatmapsDestinationDateCabinClassByFlightNumberAndOriginGet
+      parameters:
+      - name: flightNumber
+        in: path
+        description: Flight number including carrier code and any suffix (e.g. 'LH2037')
+        required: true
+        schema:
+          type: string
+      - name: origin
+        in: path
+        description: Departure airport. 3-letter IATA airport code (e.g. 'TXL')
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: Destination airport. 3-letter IATA airport code (e.g. 'MUC')
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        description: Departure date (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+      - name: cabinClass
+        in: path
+        description: "Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes\
+          \ (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /offers/lounges/{location}:
+    get:
+      tags:
+      - Offers
+      summary: Lounges
+      description: Lounge information
+      operationId: OffersLoungesByLocationGet
+      parameters:
+      - name: location
+        in: path
+        description: 3-leter IATA airport or city code (e.g. 'ZRH')
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: cabinClass
+        in: query
+        description: "Cabin class: 'M', 'E', 'C', 'F' (Acceptable values are: \"\"\
+          , \"M\", \"E\", \"C\", \"F\")"
+        schema:
+          type: string
+      - name: tierCode
+        in: query
+        description: "Frequent flyer level ('FTL', 'SGC', 'SEN', 'HON') (Acceptable\
+          \ values are: \"\", \"FTL\", \"SGC\", \"SEN\", \"HON\")"
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Language code.
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /operations/flightstatus/{flightNumber}/{date}:
+    get:
+      tags:
+      - Operations
+      summary: Flight Status
+      description: "Status of a particular flight (boarding, delayed, etc.)."
+      operationId: OperationsFlightstatusByFlightNumberAndDateGet
+      parameters:
+      - name: flightNumber
+        in: path
+        description: Flight number including carrier code and any suffix (e.g. 'LH400')
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        description: The departure date (YYYY-MM-DD) in the local time of the departure
+          airport
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /operations/flightstatus/route/{origin}/{destination}/{date}:
+    get:
+      tags:
+      - Operations
+      summary: Flight Status by Route
+      description: Status of flights between a given origin and destination on a given
+        date.
+      operationId: OperationsFlightstatusRouteDateByOriginAndDestinationGet
+      parameters:
+      - name: origin
+        in: path
+        description: 3-letter IATA airport (e.g. 'FRA')
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: 3-letter IATA airport code (e.g. 'JFK')
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        description: Departure date (YYYY-MM-DD) in local time of departure airport
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /operations/flightstatus/arrivals/{airportCode}/{fromDateTime}:
+    get:
+      tags:
+      - Operations
+      summary: Flight Status at Arrival Airport
+      description: Status of all arrivals at a given airport up to 4 hours from the
+        provided date time.
+      operationId: OperationsFlightstatusArrivalsByAirportCodeAndFromDateTimeGet
+      parameters:
+      - name: airportCode
+        in: path
+        description: 3-letter IATA aiport code (e.g. 'ZRH')
+        required: true
+        schema:
+          type: string
+      - name: fromDateTime
+        in: path
+        description: Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /operations/flightstatus/departures/{airportCode}/{fromDateTime}:
+    get:
+      tags:
+      - Operations
+      summary: Flight Status at Departure Airport
+      description: Status of all departures from a given airport up to 4 hours from
+        the provided date time.
+      operationId: OperationsFlightstatusDeparturesByAirportCodeAndFromDateTimeGet
+      parameters:
+      - name: airportCode
+        in: path
+        description: Departure airport. 3-letter IATA airport code (e.g. 'HAM')
+        required: true
+        schema:
+          type: string
+      - name: fromDateTime
+        in: path
+        description: Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /operations/schedules/{origin}/{destination}/{fromDateTime}:
+    get:
+      tags:
+      - Operations
+      summary: Flight Schedules
+      description: Scheduled flights between given airports on a given date.
+      operationId: OperationsSchedulesFromDateTimeByOriginAndDestinationGet
+      parameters:
+      - name: origin
+        in: path
+        description: Departure airport. 3-letter IATA airport code (e.g. 'ZRH')
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: Destination airport. 3-letter IATA airport code (e.g. 'FRA')
+        required: true
+        schema:
+          type: string
+      - name: fromDateTime
+        in: path
+        description: "Local departure date and optionally departure time (YYYY-MM-DD\
+          \ or YYYY-MM-DDTHH:mm). When not provided, time is assumed to be 00:01"
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      - name: directFlights
+        in: query
+        description: "Show only direct flights (false=0, true=1). Default is false"
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: "Number of records returned per request. Defaults to 20, maximum\
+          \ is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}:
+    get:
+      tags:
+      - Cargo
+      summary: Shipment Tracking
+      description: With this tracking service you can easily retrieve your shipment
+        or flight status information.
+      operationId: CargoShipmentTrackingByAWBPrefixAndAWBNumberGet
+      parameters:
+      - name: aWBPrefix
+        in: path
+        description: "aWBPrefix : Represents the airline that is the owner of this\
+          \ AWB, i.e. \"020\" = Lufthansa Cargo, format : [0-9]{3} e.g. 020"
+        required: true
+        schema:
+          type: string
+      - name: aWBNumber
+        in: path
+        description: "aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g.\
+          \ 08002050"
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}:
+    get:
+      tags:
+      - Cargo
+      summary: Retrieve all flights
+      description: Retrieve a list of all possible flights (both direct and connecting)
+        between two airports on a given date. Routes are available for today and up
+        to days in the future.
+      operationId: CargoGetRouteFromDateProductCodeByOriginAndDestinationGet
+      parameters:
+      - name: origin
+        in: path
+        description: "Departure Airport : 3-letter IATA airport code, e.g. FRA."
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: "Arrival airport : 3-letter IATA airport code, e.g. HKG."
+        required: true
+        schema:
+          type: string
+      - name: fromDate
+        in: path
+        description: "Departure date in the local time of the departure airport. Based\
+          \ on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+        required: true
+        schema:
+          type: string
+      - name: productCode
+        in: path
+        description: "Product code for requested service and specials : 3-letter eg:\
+          \ YNZ"
+        required: true
+        schema:
+          type: string
+          enum:
+          - FAN
+          - FCO
+          - FCP
+          - FDG
+          - FTF
+          - FUN
+          - FWN
+          - YCO
+          - YCP
+          - YDG
+          - YNB
+          - YNZ
+          - YTF
+          - YUN
+          - ZXB
+          - ZXF
+          - ZXR
+      - name: Accept
+        in: header
+        description: "http header: application/json or application/xml (Acceptable\
+          \ values are: \"application/json\", \"application/xml\")"
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+components:
+  schemas:
+    Coordinate:
+      type: object
+      properties:
+        Latitude:
+          type: number
+          description: "Decimal latitude. Range: -90 (South Pole) to +90 (North Pole),\
+            \ e.g. “51.540”."
+          format: float
+        Longitude:
+          type: number
+          description: "Decimal longitude. Range: -180 (West of Prime Meridian) to\
+            \ +180 (East of Prime Meridian)."
+          format: float
+      description: Container for coordinates.
+    Name:
+      type: object
+      properties:
+        '@LanguageCode':
+          type: string
+        $:
+          type: string
+      description: 2-letter ISO 639-1 language code for the corresponding item.
+    Link:
+      type: object
+      properties:
+        '@Href':
+          type: string
+          description: Link to actual a resource.
+        '@Rel':
+          type: string
+          description: "Specifying kind of link such as ‘self’ (link that returned\
+            \ this response), ‘alternate’ (link that points to another resource) or\
+            \ ‘related’ (link that points to related resource)."
+    Airport:
+      type: object
+      properties:
+        AirportCode:
+          type: string
+          description: "3-letter IATA airport code, e.g. “TXL”."
+        Position:
+          type: object
+          properties:
+            Coordinate:
+              $ref: '#/components/schemas/Coordinate'
+          description: Physical location of an airport. This data section is optional
+            and therefore not always present.
+        CityCode:
+          type: string
+          description: "3-letter IATA city code, e.g. “BER”."
+        CountryCode:
+          type: string
+          description: "2-letter ISO 3166-1 country code, e.g. “DE”."
+        LocationType:
+          type: string
+          description: " “Airport”, “RailwayStation” or “BusStation”."
+        Names:
+          type: object
+          properties:
+            Name:
+              type: array
+              description: "Array: language specific full name of airport."
+              items:
+                $ref: '#/components/schemas/Name'
+          description: Container for airport names.
+        UtcOffset:
+          type: number
+          description: Hour offset of airport to UTC time zone
+          format: float
+        TimeZoneId:
+          type: string
+          description: Time zone name airport is in
+      description: Array of all available airports or one airport matching the request.
+    AirportResource:
+      type: object
+      properties:
+        Airports:
+          type: object
+          properties:
+            Airport:
+              $ref: '#/components/schemas/Airport'
+          description: Container for airport elements.
+        Meta:
+          type: object
+          properties:
+            '@Version':
+              type: string
+            Link:
+              type: array
+              description: "Array: links to resource itself and other related resources."
+              items:
+                $ref: '#/components/schemas/Link'
+            TotalCount:
+              type: integer
+              format: int32
+          description: Container for meta links.
+      description: Root element of airport response.
+    AirportResponse:
+      type: object
+      properties:
+        AirportResource:
+          $ref: '#/components/schemas/AirportResource'
+  securitySchemes:
+    auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.lufthansa.com/v1/oauth/token
+          tokenUrl: https://api.lufthansa.com/v1/oauth/token
+          scopes:
+            read:LH Open API: read access
