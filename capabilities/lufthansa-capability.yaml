@@ -1,0 +1,1238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lufthansa LH Public API
+  description: Lufthansa LH Public API API capability.
+  tags:
+  - Lufthansa
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: lufthansa
+    baseUri: https://api.lufthansa.com/v1
+    description: Lufthansa LH Public API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{LUFTHANSA_TOKEN}}'
+    resources:
+    - name: references-countries-countrycode
+      path: /references/countries/{countryCode}
+      operations:
+      - name: referencescountriesbycountrycodeget
+        method: GET
+        description: Lufthansa Countries
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: countryCode
+          in: path
+          type: string
+          required: true
+          description: 2-letter ISO 3166-1 country code
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: references-cities-citycode
+      path: /references/cities/{cityCode}
+      operations:
+      - name: referencescitiesbycitycodeget
+        method: GET
+        description: Lufthansa Cities
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: cityCode
+          in: path
+          type: string
+          required: true
+          description: 3-letter IATA city code
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: references-airports-airportcode
+      path: /references/airports/{airportCode}
+      operations:
+      - name: referencesairportsbyairportcodeget
+        method: GET
+        description: Lufthansa Airports
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: airportCode
+          in: path
+          type: string
+          required: true
+          description: 3-letter IATA airport code
+        - name: lang
+          in: query
+          type: string
+          description: 2-letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        - name: LHoperated
+          in: query
+          type: boolean
+          description: Restrict the results to locations with flights operated by LH (false=0, true=1)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: references-airports-nearest-latitude-longitude
+      path: /references/airports/nearest/{latitude},{longitude}
+      operations:
+      - name: referencesairportsnearestbylatitudeandlongitudeg
+        method: GET
+        description: Lufthansa Nearest Airports
+        inputParameters:
+        - name: latitude
+          in: path
+          type: integer
+          required: true
+          description: Latitude in decimal format to at most 3 decimal places
+        - name: longitude
+          in: path
+          type: integer
+          required: true
+          description: Longitude in decimal format to at most 3 decimal places
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: references-airlines-airlinecode
+      path: /references/airlines/{airlineCode}
+      operations:
+      - name: referencesairlinesbyairlinecodeget
+        method: GET
+        description: Lufthansa Airlines
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: airlineCode
+          in: path
+          type: string
+          required: true
+          description: 2-character IATA airline/carrier code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: references-aircraft-aircraftcode
+      path: /references/aircraft/{aircraftCode}
+      operations:
+      - name: referencesaircraftbyaircraftcodeget
+        method: GET
+        description: Lufthansa Aircraft
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: aircraftCode
+          in: path
+          type: string
+          required: true
+          description: 3-character IATA aircraft code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: offers-seatmaps-flightnumber-origin-destination-
+      path: /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}
+      operations:
+      - name: offersseatmapsdestinationdatecabinclassbyflightn
+        method: GET
+        description: Lufthansa Seat Maps
+        inputParameters:
+        - name: flightNumber
+          in: path
+          type: string
+          required: true
+          description: Flight number including carrier code and any suffix (e.g. 'LH2037')
+        - name: origin
+          in: path
+          type: string
+          required: true
+          description: Departure airport. 3-letter IATA airport code (e.g. 'TXL')
+        - name: destination
+          in: path
+          type: string
+          required: true
+          description: Destination airport. 3-letter IATA airport code (e.g. 'MUC')
+        - name: date
+          in: path
+          type: string
+          required: true
+          description: Departure date (YYYY-MM-DD)
+        - name: cabinClass
+          in: path
+          type: string
+          required: true
+          description: 'Cabin class: ''M'', ''E'', ''C'', ''F''. Some flights have fewer classes (Acceptable values are: "M",
+            "E", "C", "F")'
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: offers-lounges-location
+      path: /offers/lounges/{location}
+      operations:
+      - name: offersloungesbylocationget
+        method: GET
+        description: Lufthansa Lounges
+        inputParameters:
+        - name: location
+          in: path
+          type: string
+          required: true
+          description: 3-leter IATA airport or city code (e.g. 'ZRH')
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: cabinClass
+          in: query
+          type: string
+          description: 'Cabin class: ''M'', ''E'', ''C'', ''F'' (Acceptable values are: "", "M", "E", "C", "F")'
+        - name: tierCode
+          in: query
+          type: string
+          description: 'Frequent flyer level (''FTL'', ''SGC'', ''SEN'', ''HON'') (Acceptable values are: "", "FTL", "SGC",
+            "SEN", "HON")'
+        - name: lang
+          in: query
+          type: string
+          description: Language code.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: operations-flightstatus-flightnumber-date
+      path: /operations/flightstatus/{flightNumber}/{date}
+      operations:
+      - name: operationsflightstatusbyflightnumberanddateget
+        method: GET
+        description: Lufthansa Flight Status
+        inputParameters:
+        - name: flightNumber
+          in: path
+          type: string
+          required: true
+          description: Flight number including carrier code and any suffix (e.g. 'LH400')
+        - name: date
+          in: path
+          type: string
+          required: true
+          description: The departure date (YYYY-MM-DD) in the local time of the departure airport
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: operations-flightstatus-route-origin-destination
+      path: /operations/flightstatus/route/{origin}/{destination}/{date}
+      operations:
+      - name: operationsflightstatusroutedatebyoriginanddestin
+        method: GET
+        description: Lufthansa Flight Status by Route
+        inputParameters:
+        - name: origin
+          in: path
+          type: string
+          required: true
+          description: 3-letter IATA airport (e.g. 'FRA')
+        - name: destination
+          in: path
+          type: string
+          required: true
+          description: 3-letter IATA airport code (e.g. 'JFK')
+        - name: date
+          in: path
+          type: string
+          required: true
+          description: Departure date (YYYY-MM-DD) in local time of departure airport
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: operations-flightstatus-arrivals-airportcode-fro
+      path: /operations/flightstatus/arrivals/{airportCode}/{fromDateTime}
+      operations:
+      - name: operationsflightstatusarrivalsbyairportcodeandfr
+        method: GET
+        description: Lufthansa Flight Status at Arrival Airport
+        inputParameters:
+        - name: airportCode
+          in: path
+          type: string
+          required: true
+          description: 3-letter IATA aiport code (e.g. 'ZRH')
+        - name: fromDateTime
+          in: path
+          type: string
+          required: true
+          description: Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: operations-flightstatus-departures-airportcode-f
+      path: /operations/flightstatus/departures/{airportCode}/{fromDateTime}
+      operations:
+      - name: operationsflightstatusdeparturesbyairportcodeand
+        method: GET
+        description: Lufthansa Flight Status at Departure Airport
+        inputParameters:
+        - name: airportCode
+          in: path
+          type: string
+          required: true
+          description: Departure airport. 3-letter IATA airport code (e.g. 'HAM')
+        - name: fromDateTime
+          in: path
+          type: string
+          required: true
+          description: Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: operations-schedules-origin-destination-fromdate
+      path: /operations/schedules/{origin}/{destination}/{fromDateTime}
+      operations:
+      - name: operationsschedulesfromdatetimebyoriginanddestin
+        method: GET
+        description: Lufthansa Flight Schedules
+        inputParameters:
+        - name: origin
+          in: path
+          type: string
+          required: true
+          description: Departure airport. 3-letter IATA airport code (e.g. 'ZRH')
+        - name: destination
+          in: path
+          type: string
+          required: true
+          description: Destination airport. 3-letter IATA airport code (e.g. 'FRA')
+        - name: fromDateTime
+          in: path
+          type: string
+          required: true
+          description: Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided,
+            time is assumed to be 00:01
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        - name: directFlights
+          in: query
+          type: boolean
+          description: Show only direct flights (false=0, true=1). Default is false
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cargo-shipmenttracking-awbprefix-awbnumber
+      path: /cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}
+      operations:
+      - name: cargoshipmenttrackingbyawbprefixandawbnumberget
+        method: GET
+        description: Lufthansa Shipment Tracking
+        inputParameters:
+        - name: aWBPrefix
+          in: path
+          type: string
+          required: true
+          description: 'aWBPrefix : Represents the airline that is the owner of this AWB, i.e. "020" = Lufthansa Cargo, format
+            : [0-9]{3} e.g. 020'
+        - name: aWBNumber
+          in: path
+          type: string
+          required: true
+          description: 'aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050'
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cargo-getroute-origin-destination-fromdate-produ
+      path: /cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}
+      operations:
+      - name: cargogetroutefromdateproductcodebyoriginanddesti
+        method: GET
+        description: Lufthansa Retrieve all flights
+        inputParameters:
+        - name: origin
+          in: path
+          type: string
+          required: true
+          description: 'Departure Airport : 3-letter IATA airport code, e.g. FRA.'
+        - name: destination
+          in: path
+          type: string
+          required: true
+          description: 'Arrival airport : 3-letter IATA airport code, e.g. HKG.'
+        - name: fromDate
+          in: path
+          type: string
+          required: true
+          description: 'Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time).
+            format : yyyy-MM-dd eg : 2017-07-15'
+        - name: productCode
+          in: path
+          type: string
+          required: true
+          description: 'Product code for requested service and specials : 3-letter eg: YNZ'
+        - name: Accept
+          in: header
+          type: string
+          required: true
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: lufthansa-rest
+    description: REST adapter for Lufthansa LH Public API.
+    resources:
+    - path: /references/countries/{countryCode}
+      name: referencescountriesbycountrycodeget
+      operations:
+      - method: GET
+        name: referencescountriesbycountrycodeget
+        description: Lufthansa Countries
+        call: lufthansa.referencescountriesbycountrycodeget
+        with:
+          countryCode: rest.countryCode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /references/cities/{cityCode}
+      name: referencescitiesbycitycodeget
+      operations:
+      - method: GET
+        name: referencescitiesbycitycodeget
+        description: Lufthansa Cities
+        call: lufthansa.referencescitiesbycitycodeget
+        with:
+          cityCode: rest.cityCode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /references/airports/{airportCode}
+      name: referencesairportsbyairportcodeget
+      operations:
+      - method: GET
+        name: referencesairportsbyairportcodeget
+        description: Lufthansa Airports
+        call: lufthansa.referencesairportsbyairportcodeget
+        with:
+          airportCode: rest.airportCode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /references/airports/nearest/{latitude},{longitude}
+      name: referencesairportsnearestbylatitudeandlongitudeg
+      operations:
+      - method: GET
+        name: referencesairportsnearestbylatitudeandlongitudeg
+        description: Lufthansa Nearest Airports
+        call: lufthansa.referencesairportsnearestbylatitudeandlongitudeg
+        with:
+          latitude: rest.latitude
+          longitude: rest.longitude
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /references/airlines/{airlineCode}
+      name: referencesairlinesbyairlinecodeget
+      operations:
+      - method: GET
+        name: referencesairlinesbyairlinecodeget
+        description: Lufthansa Airlines
+        call: lufthansa.referencesairlinesbyairlinecodeget
+        with:
+          airlineCode: rest.airlineCode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /references/aircraft/{aircraftCode}
+      name: referencesaircraftbyaircraftcodeget
+      operations:
+      - method: GET
+        name: referencesaircraftbyaircraftcodeget
+        description: Lufthansa Aircraft
+        call: lufthansa.referencesaircraftbyaircraftcodeget
+        with:
+          aircraftCode: rest.aircraftCode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}
+      name: offersseatmapsdestinationdatecabinclassbyflightn
+      operations:
+      - method: GET
+        name: offersseatmapsdestinationdatecabinclassbyflightn
+        description: Lufthansa Seat Maps
+        call: lufthansa.offersseatmapsdestinationdatecabinclassbyflightn
+        with:
+          flightNumber: rest.flightNumber
+          origin: rest.origin
+          destination: rest.destination
+          date: rest.date
+          cabinClass: rest.cabinClass
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /offers/lounges/{location}
+      name: offersloungesbylocationget
+      operations:
+      - method: GET
+        name: offersloungesbylocationget
+        description: Lufthansa Lounges
+        call: lufthansa.offersloungesbylocationget
+        with:
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /operations/flightstatus/{flightNumber}/{date}
+      name: operationsflightstatusbyflightnumberanddateget
+      operations:
+      - method: GET
+        name: operationsflightstatusbyflightnumberanddateget
+        description: Lufthansa Flight Status
+        call: lufthansa.operationsflightstatusbyflightnumberanddateget
+        with:
+          flightNumber: rest.flightNumber
+          date: rest.date
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /operations/flightstatus/route/{origin}/{destination}/{date}
+      name: operationsflightstatusroutedatebyoriginanddestin
+      operations:
+      - method: GET
+        name: operationsflightstatusroutedatebyoriginanddestin
+        description: Lufthansa Flight Status by Route
+        call: lufthansa.operationsflightstatusroutedatebyoriginanddestin
+        with:
+          origin: rest.origin
+          destination: rest.destination
+          date: rest.date
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /operations/flightstatus/arrivals/{airportCode}/{fromDateTime}
+      name: operationsflightstatusarrivalsbyairportcodeandfr
+      operations:
+      - method: GET
+        name: operationsflightstatusarrivalsbyairportcodeandfr
+        description: Lufthansa Flight Status at Arrival Airport
+        call: lufthansa.operationsflightstatusarrivalsbyairportcodeandfr
+        with:
+          airportCode: rest.airportCode
+          fromDateTime: rest.fromDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /operations/flightstatus/departures/{airportCode}/{fromDateTime}
+      name: operationsflightstatusdeparturesbyairportcodeand
+      operations:
+      - method: GET
+        name: operationsflightstatusdeparturesbyairportcodeand
+        description: Lufthansa Flight Status at Departure Airport
+        call: lufthansa.operationsflightstatusdeparturesbyairportcodeand
+        with:
+          airportCode: rest.airportCode
+          fromDateTime: rest.fromDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /operations/schedules/{origin}/{destination}/{fromDateTime}
+      name: operationsschedulesfromdatetimebyoriginanddestin
+      operations:
+      - method: GET
+        name: operationsschedulesfromdatetimebyoriginanddestin
+        description: Lufthansa Flight Schedules
+        call: lufthansa.operationsschedulesfromdatetimebyoriginanddestin
+        with:
+          origin: rest.origin
+          destination: rest.destination
+          fromDateTime: rest.fromDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}
+      name: cargoshipmenttrackingbyawbprefixandawbnumberget
+      operations:
+      - method: GET
+        name: cargoshipmenttrackingbyawbprefixandawbnumberget
+        description: Lufthansa Shipment Tracking
+        call: lufthansa.cargoshipmenttrackingbyawbprefixandawbnumberget
+        with:
+          aWBPrefix: rest.aWBPrefix
+          aWBNumber: rest.aWBNumber
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}
+      name: cargogetroutefromdateproductcodebyoriginanddesti
+      operations:
+      - method: GET
+        name: cargogetroutefromdateproductcodebyoriginanddesti
+        description: Lufthansa Retrieve all flights
+        call: lufthansa.cargogetroutefromdateproductcodebyoriginanddesti
+        with:
+          origin: rest.origin
+          destination: rest.destination
+          fromDate: rest.fromDate
+          productCode: rest.productCode
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: lufthansa-mcp
+    transport: http
+    description: MCP adapter for Lufthansa LH Public API for AI agent use.
+    tools:
+    - name: referencescountriesbycountrycodeget
+      description: Lufthansa Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencescountriesbycountrycodeget
+      with:
+        countryCode: tools.countryCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: countryCode
+        type: string
+        description: 2-letter ISO 3166-1 country code
+        required: true
+      - name: lang
+        type: string
+        description: 2 letter ISO 3166-1 language code
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: referencescitiesbycitycodeget
+      description: Lufthansa Cities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencescitiesbycitycodeget
+      with:
+        cityCode: tools.cityCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: cityCode
+        type: string
+        description: 3-letter IATA city code
+        required: true
+      - name: lang
+        type: string
+        description: 2 letter ISO 3166-1 language code
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: referencesairportsbyairportcodeget
+      description: Lufthansa Airports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencesairportsbyairportcodeget
+      with:
+        airportCode: tools.airportCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+        LHoperated: tools.LHoperated
+      inputParameters:
+      - name: airportCode
+        type: string
+        description: 3-letter IATA airport code
+        required: true
+      - name: lang
+        type: string
+        description: 2-letter ISO 3166-1 language code
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      - name: LHoperated
+        type: boolean
+        description: Restrict the results to locations with flights operated by LH (false=0, true=1)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: referencesairportsnearestbylatitudeandlongitudeg
+      description: Lufthansa Nearest Airports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencesairportsnearestbylatitudeandlongitudeg
+      with:
+        latitude: tools.latitude
+        longitude: tools.longitude
+        lang: tools.lang
+      inputParameters:
+      - name: latitude
+        type: integer
+        description: Latitude in decimal format to at most 3 decimal places
+        required: true
+      - name: longitude
+        type: integer
+        description: Longitude in decimal format to at most 3 decimal places
+        required: true
+      - name: lang
+        type: string
+        description: 2 letter ISO 3166-1 language code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: referencesairlinesbyairlinecodeget
+      description: Lufthansa Airlines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencesairlinesbyairlinecodeget
+      with:
+        airlineCode: tools.airlineCode
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: airlineCode
+        type: string
+        description: 2-character IATA airline/carrier code
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: referencesaircraftbyaircraftcodeget
+      description: Lufthansa Aircraft
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.referencesaircraftbyaircraftcodeget
+      with:
+        aircraftCode: tools.aircraftCode
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: aircraftCode
+        type: string
+        description: 3-character IATA aircraft code
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: offersseatmapsdestinationdatecabinclassbyflightn
+      description: Lufthansa Seat Maps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.offersseatmapsdestinationdatecabinclassbyflightn
+      with:
+        flightNumber: tools.flightNumber
+        origin: tools.origin
+        destination: tools.destination
+        date: tools.date
+        cabinClass: tools.cabinClass
+      inputParameters:
+      - name: flightNumber
+        type: string
+        description: Flight number including carrier code and any suffix (e.g. 'LH2037')
+        required: true
+      - name: origin
+        type: string
+        description: Departure airport. 3-letter IATA airport code (e.g. 'TXL')
+        required: true
+      - name: destination
+        type: string
+        description: Destination airport. 3-letter IATA airport code (e.g. 'MUC')
+        required: true
+      - name: date
+        type: string
+        description: Departure date (YYYY-MM-DD)
+        required: true
+      - name: cabinClass
+        type: string
+        description: 'Cabin class: ''M'', ''E'', ''C'', ''F''. Some flights have fewer classes (Acceptable values are: "M",
+          "E", "C", "F")'
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: offersloungesbylocationget
+      description: Lufthansa Lounges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.offersloungesbylocationget
+      with:
+        location: tools.location
+        cabinClass: tools.cabinClass
+        tierCode: tools.tierCode
+        lang: tools.lang
+      inputParameters:
+      - name: location
+        type: string
+        description: 3-leter IATA airport or city code (e.g. 'ZRH')
+        required: true
+      - name: cabinClass
+        type: string
+        description: 'Cabin class: ''M'', ''E'', ''C'', ''F'' (Acceptable values are: "", "M", "E", "C", "F")'
+      - name: tierCode
+        type: string
+        description: 'Frequent flyer level (''FTL'', ''SGC'', ''SEN'', ''HON'') (Acceptable values are: "", "FTL", "SGC",
+          "SEN", "HON")'
+      - name: lang
+        type: string
+        description: Language code.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: operationsflightstatusbyflightnumberanddateget
+      description: Lufthansa Flight Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.operationsflightstatusbyflightnumberanddateget
+      with:
+        flightNumber: tools.flightNumber
+        date: tools.date
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: flightNumber
+        type: string
+        description: Flight number including carrier code and any suffix (e.g. 'LH400')
+        required: true
+      - name: date
+        type: string
+        description: The departure date (YYYY-MM-DD) in the local time of the departure airport
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: operationsflightstatusroutedatebyoriginanddestin
+      description: Lufthansa Flight Status by Route
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.operationsflightstatusroutedatebyoriginanddestin
+      with:
+        origin: tools.origin
+        destination: tools.destination
+        date: tools.date
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: origin
+        type: string
+        description: 3-letter IATA airport (e.g. 'FRA')
+        required: true
+      - name: destination
+        type: string
+        description: 3-letter IATA airport code (e.g. 'JFK')
+        required: true
+      - name: date
+        type: string
+        description: Departure date (YYYY-MM-DD) in local time of departure airport
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: operationsflightstatusarrivalsbyairportcodeandfr
+      description: Lufthansa Flight Status at Arrival Airport
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.operationsflightstatusarrivalsbyairportcodeandfr
+      with:
+        airportCode: tools.airportCode
+        fromDateTime: tools.fromDateTime
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: airportCode
+        type: string
+        description: 3-letter IATA aiport code (e.g. 'ZRH')
+        required: true
+      - name: fromDateTime
+        type: string
+        description: Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: operationsflightstatusdeparturesbyairportcodeand
+      description: Lufthansa Flight Status at Departure Airport
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.operationsflightstatusdeparturesbyairportcodeand
+      with:
+        airportCode: tools.airportCode
+        fromDateTime: tools.fromDateTime
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: airportCode
+        type: string
+        description: Departure airport. 3-letter IATA airport code (e.g. 'HAM')
+        required: true
+      - name: fromDateTime
+        type: string
+        description: Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)
+        required: true
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: operationsschedulesfromdatetimebyoriginanddestin
+      description: Lufthansa Flight Schedules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.operationsschedulesfromdatetimebyoriginanddestin
+      with:
+        origin: tools.origin
+        destination: tools.destination
+        fromDateTime: tools.fromDateTime
+        directFlights: tools.directFlights
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: origin
+        type: string
+        description: Departure airport. 3-letter IATA airport code (e.g. 'ZRH')
+        required: true
+      - name: destination
+        type: string
+        description: Destination airport. 3-letter IATA airport code (e.g. 'FRA')
+        required: true
+      - name: fromDateTime
+        type: string
+        description: Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided,
+          time is assumed to be 00:01
+        required: true
+      - name: directFlights
+        type: boolean
+        description: Show only direct flights (false=0, true=1). Default is false
+      - name: limit
+        type: string
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is
+          given, 100 will be taken)
+      - name: offset
+        type: string
+        description: Number of records skipped. Defaults to 0
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cargoshipmenttrackingbyawbprefixandawbnumberget
+      description: Lufthansa Shipment Tracking
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.cargoshipmenttrackingbyawbprefixandawbnumberget
+      with:
+        aWBPrefix: tools.aWBPrefix
+        aWBNumber: tools.aWBNumber
+      inputParameters:
+      - name: aWBPrefix
+        type: string
+        description: 'aWBPrefix : Represents the airline that is the owner of this AWB, i.e. "020" = Lufthansa Cargo, format
+          : [0-9]{3} e.g. 020'
+        required: true
+      - name: aWBNumber
+        type: string
+        description: 'aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050'
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cargogetroutefromdateproductcodebyoriginanddesti
+      description: Lufthansa Retrieve all flights
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa.cargogetroutefromdateproductcodebyoriginanddesti
+      with:
+        origin: tools.origin
+        destination: tools.destination
+        fromDate: tools.fromDate
+        productCode: tools.productCode
+      inputParameters:
+      - name: origin
+        type: string
+        description: 'Departure Airport : 3-letter IATA airport code, e.g. FRA.'
+        required: true
+      - name: destination
+        type: string
+        description: 'Arrival airport : 3-letter IATA airport code, e.g. HKG.'
+        required: true
+      - name: fromDate
+        type: string
+        description: 'Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format
+          : yyyy-MM-dd eg : 2017-07-15'
+        required: true
+      - name: productCode
+        type: string
+        description: 'Product code for requested service and specials : 3-letter eg: YNZ'
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    LUFTHANSA_TOKEN: LUFTHANSA_TOKEN
