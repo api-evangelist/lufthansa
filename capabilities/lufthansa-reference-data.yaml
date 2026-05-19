@@ -1,0 +1,434 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lufthansa LH Public API — Reference Data
+  description: 'Lufthansa LH Public API — Reference Data. 6 operations. Lead operation: Lufthansa Aircraft. Self-contained
+    Naftiko capability covering one Lufthansa business surface.'
+  tags:
+  - Lufthansa
+  - Reference Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUFTHANSA_API_KEY: LUFTHANSA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: lufthansa-reference-data
+    baseUri: https://api.lufthansa.com/v1
+    description: Lufthansa LH Public API — Reference Data business capability. Self-contained, no shared references.
+    resources:
+    - name: references-aircraft-aircraftCode
+      path: /references/aircraft/{aircraftCode}
+      operations:
+      - name: referencesaircraftbyaircraftcodeget
+        method: GET
+        description: Lufthansa Aircraft
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: aircraftCode
+          in: path
+          type: string
+          description: 3-character IATA aircraft code
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: references-airlines-airlineCode
+      path: /references/airlines/{airlineCode}
+      operations:
+      - name: referencesairlinesbyairlinecodeget
+        method: GET
+        description: Lufthansa Airlines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: airlineCode
+          in: path
+          type: string
+          description: 2-character IATA airline/carrier code
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: references-airports-nearest-latitude},{longitude
+      path: /references/airports/nearest/{latitude},{longitude}
+      operations:
+      - name: referencesairportsnearestbylatitudeandlongitudeget
+        method: GET
+        description: Lufthansa Nearest Airports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: latitude
+          in: path
+          type: integer
+          description: Latitude in decimal format to at most 3 decimal places
+          required: true
+        - name: longitude
+          in: path
+          type: integer
+          description: Longitude in decimal format to at most 3 decimal places
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+    - name: references-airports-airportCode
+      path: /references/airports/{airportCode}
+      operations:
+      - name: referencesairportsbyairportcodeget
+        method: GET
+        description: Lufthansa Airports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: airportCode
+          in: path
+          type: string
+          description: 3-letter IATA airport code
+          required: true
+        - name: lang
+          in: query
+          type: string
+          description: 2-letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+        - name: LHoperated
+          in: query
+          type: boolean
+          description: Restrict the results to locations with flights operated by LH (false=0, true=1)
+    - name: references-cities-cityCode
+      path: /references/cities/{cityCode}
+      operations:
+      - name: referencescitiesbycitycodeget
+        method: GET
+        description: Lufthansa Cities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: cityCode
+          in: path
+          type: string
+          description: 3-letter IATA city code
+          required: true
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: references-countries-countryCode
+      path: /references/countries/{countryCode}
+      operations:
+      - name: referencescountriesbycountrycodeget
+        method: GET
+        description: Lufthansa Countries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: countryCode
+          in: path
+          type: string
+          description: 2-letter ISO 3166-1 country code
+          required: true
+        - name: lang
+          in: query
+          type: string
+          description: 2 letter ISO 3166-1 language code
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    authentication:
+      type: bearer
+      token: '{{env.LUFTHANSA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: lufthansa-reference-data-rest
+    port: 8080
+    description: REST adapter for Lufthansa LH Public API — Reference Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/references/aircraft/{aircraftcode}
+      name: references-aircraft-aircraftcode
+      description: REST surface for references-aircraft-aircraftCode.
+      operations:
+      - method: GET
+        name: referencesaircraftbyaircraftcodeget
+        description: Lufthansa Aircraft
+        call: lufthansa-reference-data.referencesaircraftbyaircraftcodeget
+        with:
+          Accept: rest.Accept
+          aircraftCode: rest.aircraftCode
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/references/airlines/{airlinecode}
+      name: references-airlines-airlinecode
+      description: REST surface for references-airlines-airlineCode.
+      operations:
+      - method: GET
+        name: referencesairlinesbyairlinecodeget
+        description: Lufthansa Airlines
+        call: lufthansa-reference-data.referencesairlinesbyairlinecodeget
+        with:
+          Accept: rest.Accept
+          airlineCode: rest.airlineCode
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/references/airports/nearest/{latitude-longitude}
+      name: references-airports-nearest-latitude-longitude
+      description: REST surface for references-airports-nearest-latitude},{longitude.
+      operations:
+      - method: GET
+        name: referencesairportsnearestbylatitudeandlongitudeget
+        description: Lufthansa Nearest Airports
+        call: lufthansa-reference-data.referencesairportsnearestbylatitudeandlongitudeget
+        with:
+          latitude: rest.latitude
+          longitude: rest.longitude
+          Accept: rest.Accept
+          lang: rest.lang
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/references/airports/{airportcode}
+      name: references-airports-airportcode
+      description: REST surface for references-airports-airportCode.
+      operations:
+      - method: GET
+        name: referencesairportsbyairportcodeget
+        description: Lufthansa Airports
+        call: lufthansa-reference-data.referencesairportsbyairportcodeget
+        with:
+          Accept: rest.Accept
+          airportCode: rest.airportCode
+          lang: rest.lang
+          limit: rest.limit
+          offset: rest.offset
+          LHoperated: rest.LHoperated
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/references/cities/{citycode}
+      name: references-cities-citycode
+      description: REST surface for references-cities-cityCode.
+      operations:
+      - method: GET
+        name: referencescitiesbycitycodeget
+        description: Lufthansa Cities
+        call: lufthansa-reference-data.referencescitiesbycitycodeget
+        with:
+          Accept: rest.Accept
+          cityCode: rest.cityCode
+          lang: rest.lang
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/references/countries/{countrycode}
+      name: references-countries-countrycode
+      description: REST surface for references-countries-countryCode.
+      operations:
+      - method: GET
+        name: referencescountriesbycountrycodeget
+        description: Lufthansa Countries
+        call: lufthansa-reference-data.referencescountriesbycountrycodeget
+        with:
+          Accept: rest.Accept
+          countryCode: rest.countryCode
+          lang: rest.lang
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: lufthansa-reference-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lufthansa LH Public API — Reference Data. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: lufthansa-aircraft
+      description: Lufthansa Aircraft
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencesaircraftbyaircraftcodeget
+      with:
+        Accept: tools.Accept
+        aircraftCode: tools.aircraftCode
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-airlines
+      description: Lufthansa Airlines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencesairlinesbyairlinecodeget
+      with:
+        Accept: tools.Accept
+        airlineCode: tools.airlineCode
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-nearest-airports
+      description: Lufthansa Nearest Airports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencesairportsnearestbylatitudeandlongitudeget
+      with:
+        latitude: tools.latitude
+        longitude: tools.longitude
+        Accept: tools.Accept
+        lang: tools.lang
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-airports
+      description: Lufthansa Airports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencesairportsbyairportcodeget
+      with:
+        Accept: tools.Accept
+        airportCode: tools.airportCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+        LHoperated: tools.LHoperated
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-cities
+      description: Lufthansa Cities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencescitiesbycitycodeget
+      with:
+        Accept: tools.Accept
+        cityCode: tools.cityCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-countries
+      description: Lufthansa Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-reference-data.referencescountriesbycountrycodeget
+      with:
+        Accept: tools.Accept
+        countryCode: tools.countryCode
+        lang: tools.lang
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.

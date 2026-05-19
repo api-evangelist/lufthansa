@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lufthansa LH Public API — Offers
+  description: 'Lufthansa LH Public API — Offers. 2 operations. Lead operation: Lufthansa Lounges. Self-contained Naftiko
+    capability covering one Lufthansa business surface.'
+  tags:
+  - Lufthansa
+  - Offers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUFTHANSA_API_KEY: LUFTHANSA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: lufthansa-offers
+    baseUri: https://api.lufthansa.com/v1
+    description: Lufthansa LH Public API — Offers business capability. Self-contained, no shared references.
+    resources:
+    - name: offers-lounges-location
+      path: /offers/lounges/{location}
+      operations:
+      - name: offersloungesbylocationget
+        method: GET
+        description: Lufthansa Lounges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location
+          in: path
+          type: string
+          description: 3-leter IATA airport or city code (e.g. 'ZRH')
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: cabinClass
+          in: query
+          type: string
+          description: 'Cabin class: ''M'', ''E'', ''C'', ''F'' (Acceptable values are: "", "M", "E", "C", "F")'
+        - name: tierCode
+          in: query
+          type: string
+          description: 'Frequent flyer level (''FTL'', ''SGC'', ''SEN'', ''HON'') (Acceptable values are: "", "FTL", "SGC",
+            "SEN", "HON")'
+        - name: lang
+          in: query
+          type: string
+          description: Language code.
+    - name: offers-seatmaps-flightNumber-origin-destination-date-cabinClass
+      path: /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}
+      operations:
+      - name: offersseatmapsdestinationdatecabinclassbyflightnumberandoriginget
+        method: GET
+        description: Lufthansa Seat Maps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: flightNumber
+          in: path
+          type: string
+          description: Flight number including carrier code and any suffix (e.g. 'LH2037')
+          required: true
+        - name: origin
+          in: path
+          type: string
+          description: Departure airport. 3-letter IATA airport code (e.g. 'TXL')
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: Destination airport. 3-letter IATA airport code (e.g. 'MUC')
+          required: true
+        - name: date
+          in: path
+          type: string
+          description: Departure date (YYYY-MM-DD)
+          required: true
+        - name: cabinClass
+          in: path
+          type: string
+          description: 'Cabin class: ''M'', ''E'', ''C'', ''F''. Some flights have fewer classes (Acceptable values are: "M",
+            "E", "C", "F")'
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.LUFTHANSA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: lufthansa-offers-rest
+    port: 8080
+    description: REST adapter for Lufthansa LH Public API — Offers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/offers/lounges/{location}
+      name: offers-lounges-location
+      description: REST surface for offers-lounges-location.
+      operations:
+      - method: GET
+        name: offersloungesbylocationget
+        description: Lufthansa Lounges
+        call: lufthansa-offers.offersloungesbylocationget
+        with:
+          location: rest.location
+          Accept: rest.Accept
+          cabinClass: rest.cabinClass
+          tierCode: rest.tierCode
+          lang: rest.lang
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/offers/seatmaps/{flightnumber}/{origin}/{destination}/{date}/{cabinclass}
+      name: offers-seatmaps-flightnumber-origin-destination-date-cabinclass
+      description: REST surface for offers-seatmaps-flightNumber-origin-destination-date-cabinClass.
+      operations:
+      - method: GET
+        name: offersseatmapsdestinationdatecabinclassbyflightnumberandoriginget
+        description: Lufthansa Seat Maps
+        call: lufthansa-offers.offersseatmapsdestinationdatecabinclassbyflightnumberandoriginget
+        with:
+          flightNumber: rest.flightNumber
+          origin: rest.origin
+          destination: rest.destination
+          date: rest.date
+          cabinClass: rest.cabinClass
+          Accept: rest.Accept
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: lufthansa-offers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lufthansa LH Public API — Offers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lufthansa-lounges
+      description: Lufthansa Lounges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-offers.offersloungesbylocationget
+      with:
+        location: tools.location
+        Accept: tools.Accept
+        cabinClass: tools.cabinClass
+        tierCode: tools.tierCode
+        lang: tools.lang
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-seat-maps
+      description: Lufthansa Seat Maps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-offers.offersseatmapsdestinationdatecabinclassbyflightnumberandoriginget
+      with:
+        flightNumber: tools.flightNumber
+        origin: tools.origin
+        destination: tools.destination
+        date: tools.date
+        cabinClass: tools.cabinClass
+        Accept: tools.Accept
+      outputParameters:
+      - type: object
+        mapping: $.

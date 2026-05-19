@@ -1,0 +1,404 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lufthansa LH Public API — Operations
+  description: 'Lufthansa LH Public API — Operations. 5 operations. Lead operation: Lufthansa Flight Status at Arrival Airport.
+    Self-contained Naftiko capability covering one Lufthansa business surface.'
+  tags:
+  - Lufthansa
+  - Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUFTHANSA_API_KEY: LUFTHANSA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: lufthansa-operations
+    baseUri: https://api.lufthansa.com/v1
+    description: Lufthansa LH Public API — Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: operations-flightstatus-arrivals-airportCode-fromDateTime
+      path: /operations/flightstatus/arrivals/{airportCode}/{fromDateTime}
+      operations:
+      - name: operationsflightstatusarrivalsbyairportcodeandfromdatetimeget
+        method: GET
+        description: Lufthansa Flight Status at Arrival Airport
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: airportCode
+          in: path
+          type: string
+          description: 3-letter IATA aiport code (e.g. 'ZRH')
+          required: true
+        - name: fromDateTime
+          in: path
+          type: string
+          description: Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: operations-flightstatus-departures-airportCode-fromDateTime
+      path: /operations/flightstatus/departures/{airportCode}/{fromDateTime}
+      operations:
+      - name: operationsflightstatusdeparturesbyairportcodeandfromdatetimeget
+        method: GET
+        description: Lufthansa Flight Status at Departure Airport
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: airportCode
+          in: path
+          type: string
+          description: Departure airport. 3-letter IATA airport code (e.g. 'HAM')
+          required: true
+        - name: fromDateTime
+          in: path
+          type: string
+          description: Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: operations-flightstatus-route-origin-destination-date
+      path: /operations/flightstatus/route/{origin}/{destination}/{date}
+      operations:
+      - name: operationsflightstatusroutedatebyoriginanddestinationget
+        method: GET
+        description: Lufthansa Flight Status by Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: origin
+          in: path
+          type: string
+          description: 3-letter IATA airport (e.g. 'FRA')
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: 3-letter IATA airport code (e.g. 'JFK')
+          required: true
+        - name: date
+          in: path
+          type: string
+          description: Departure date (YYYY-MM-DD) in local time of departure airport
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: operations-flightstatus-flightNumber-date
+      path: /operations/flightstatus/{flightNumber}/{date}
+      operations:
+      - name: operationsflightstatusbyflightnumberanddateget
+        method: GET
+        description: Lufthansa Flight Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: flightNumber
+          in: path
+          type: string
+          description: Flight number including carrier code and any suffix (e.g. 'LH400')
+          required: true
+        - name: date
+          in: path
+          type: string
+          description: The departure date (YYYY-MM-DD) in the local time of the departure airport
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    - name: operations-schedules-origin-destination-fromDateTime
+      path: /operations/schedules/{origin}/{destination}/{fromDateTime}
+      operations:
+      - name: operationsschedulesfromdatetimebyoriginanddestinationget
+        method: GET
+        description: Lufthansa Flight Schedules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: origin
+          in: path
+          type: string
+          description: Departure airport. 3-letter IATA airport code (e.g. 'ZRH')
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: Destination airport. 3-letter IATA airport code (e.g. 'FRA')
+          required: true
+        - name: fromDateTime
+          in: path
+          type: string
+          description: Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided,
+            time is assumed to be 00:01
+          required: true
+        - name: Accept
+          in: header
+          type: string
+          description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+          required: true
+        - name: directFlights
+          in: query
+          type: boolean
+          description: Show only direct flights (false=0, true=1). Default is false
+        - name: limit
+          in: query
+          type: string
+          description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100
+            is given, 100 will be taken)
+        - name: offset
+          in: query
+          type: string
+          description: Number of records skipped. Defaults to 0
+    authentication:
+      type: bearer
+      token: '{{env.LUFTHANSA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: lufthansa-operations-rest
+    port: 8080
+    description: REST adapter for Lufthansa LH Public API — Operations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/operations/flightstatus/arrivals/{airportcode}/{fromdatetime}
+      name: operations-flightstatus-arrivals-airportcode-fromdatetime
+      description: REST surface for operations-flightstatus-arrivals-airportCode-fromDateTime.
+      operations:
+      - method: GET
+        name: operationsflightstatusarrivalsbyairportcodeandfromdatetimeget
+        description: Lufthansa Flight Status at Arrival Airport
+        call: lufthansa-operations.operationsflightstatusarrivalsbyairportcodeandfromdatetimeget
+        with:
+          airportCode: rest.airportCode
+          fromDateTime: rest.fromDateTime
+          Accept: rest.Accept
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/operations/flightstatus/departures/{airportcode}/{fromdatetime}
+      name: operations-flightstatus-departures-airportcode-fromdatetime
+      description: REST surface for operations-flightstatus-departures-airportCode-fromDateTime.
+      operations:
+      - method: GET
+        name: operationsflightstatusdeparturesbyairportcodeandfromdatetimeget
+        description: Lufthansa Flight Status at Departure Airport
+        call: lufthansa-operations.operationsflightstatusdeparturesbyairportcodeandfromdatetimeget
+        with:
+          airportCode: rest.airportCode
+          fromDateTime: rest.fromDateTime
+          Accept: rest.Accept
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/operations/flightstatus/route/{origin}/{destination}/{date}
+      name: operations-flightstatus-route-origin-destination-date
+      description: REST surface for operations-flightstatus-route-origin-destination-date.
+      operations:
+      - method: GET
+        name: operationsflightstatusroutedatebyoriginanddestinationget
+        description: Lufthansa Flight Status by Route
+        call: lufthansa-operations.operationsflightstatusroutedatebyoriginanddestinationget
+        with:
+          origin: rest.origin
+          destination: rest.destination
+          date: rest.date
+          Accept: rest.Accept
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/operations/flightstatus/{flightnumber}/{date}
+      name: operations-flightstatus-flightnumber-date
+      description: REST surface for operations-flightstatus-flightNumber-date.
+      operations:
+      - method: GET
+        name: operationsflightstatusbyflightnumberanddateget
+        description: Lufthansa Flight Status
+        call: lufthansa-operations.operationsflightstatusbyflightnumberanddateget
+        with:
+          flightNumber: rest.flightNumber
+          date: rest.date
+          Accept: rest.Accept
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/operations/schedules/{origin}/{destination}/{fromdatetime}
+      name: operations-schedules-origin-destination-fromdatetime
+      description: REST surface for operations-schedules-origin-destination-fromDateTime.
+      operations:
+      - method: GET
+        name: operationsschedulesfromdatetimebyoriginanddestinationget
+        description: Lufthansa Flight Schedules
+        call: lufthansa-operations.operationsschedulesfromdatetimebyoriginanddestinationget
+        with:
+          origin: rest.origin
+          destination: rest.destination
+          fromDateTime: rest.fromDateTime
+          Accept: rest.Accept
+          directFlights: rest.directFlights
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: lufthansa-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lufthansa LH Public API — Operations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lufthansa-flight-status-arrival-airport
+      description: Lufthansa Flight Status at Arrival Airport
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-operations.operationsflightstatusarrivalsbyairportcodeandfromdatetimeget
+      with:
+        airportCode: tools.airportCode
+        fromDateTime: tools.fromDateTime
+        Accept: tools.Accept
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-flight-status-departure-airport
+      description: Lufthansa Flight Status at Departure Airport
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-operations.operationsflightstatusdeparturesbyairportcodeandfromdatetimeget
+      with:
+        airportCode: tools.airportCode
+        fromDateTime: tools.fromDateTime
+        Accept: tools.Accept
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-flight-status-route
+      description: Lufthansa Flight Status by Route
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-operations.operationsflightstatusroutedatebyoriginanddestinationget
+      with:
+        origin: tools.origin
+        destination: tools.destination
+        date: tools.date
+        Accept: tools.Accept
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-flight-status
+      description: Lufthansa Flight Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-operations.operationsflightstatusbyflightnumberanddateget
+      with:
+        flightNumber: tools.flightNumber
+        date: tools.date
+        Accept: tools.Accept
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lufthansa-flight-schedules
+      description: Lufthansa Flight Schedules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lufthansa-operations.operationsschedulesfromdatetimebyoriginanddestinationget
+      with:
+        origin: tools.origin
+        destination: tools.destination
+        fromDateTime: tools.fromDateTime
+        Accept: tools.Accept
+        directFlights: tools.directFlights
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
