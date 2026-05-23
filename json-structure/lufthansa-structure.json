@@ -1,0 +1,183 @@
+{
+  "provider": "Lufthansa",
+  "providerId": "lufthansa",
+  "kind": "json-structure",
+  "description": "Structural overview of the Lufthansa API surface; extracted from openapi/.",
+  "schemaCount": 6,
+  "operationCount": 15,
+  "schemas": [
+    {
+      "name": "Coordinate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Name",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Link",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Airport",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AirportResource",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AirportResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/references/countries/{countryCode}",
+      "operationId": "ReferencesCountriesByCountryCodeGet",
+      "summary": "Lufthansa Countries",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/references/cities/{cityCode}",
+      "operationId": "ReferencesCitiesByCityCodeGet",
+      "summary": "Lufthansa Cities",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/references/airports/{airportCode}",
+      "operationId": "ReferencesAirportsByAirportCodeGet",
+      "summary": "Lufthansa Airports",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/references/airports/nearest/{latitude},{longitude}",
+      "operationId": "ReferencesAirportsNearestByLatitudeAndLongitudeGet",
+      "summary": "Lufthansa Nearest Airports",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/references/airlines/{airlineCode}",
+      "operationId": "ReferencesAirlinesByAirlineCodeGet",
+      "summary": "Lufthansa Airlines",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/references/aircraft/{aircraftCode}",
+      "operationId": "ReferencesAircraftByAircraftCodeGet",
+      "summary": "Lufthansa Aircraft",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}",
+      "operationId": "OffersSeatmapsDestinationDateCabinClassByFlightNumberAndOriginGet",
+      "summary": "Lufthansa Seat Maps",
+      "tags": [
+        "Offers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/offers/lounges/{location}",
+      "operationId": "OffersLoungesByLocationGet",
+      "summary": "Lufthansa Lounges",
+      "tags": [
+        "Offers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/operations/flightstatus/{flightNumber}/{date}",
+      "operationId": "OperationsFlightstatusByFlightNumberAndDateGet",
+      "summary": "Lufthansa Flight Status",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/operations/flightstatus/route/{origin}/{destination}/{date}",
+      "operationId": "OperationsFlightstatusRouteDateByOriginAndDestinationGet",
+      "summary": "Lufthansa Flight Status by Route",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/operations/flightstatus/arrivals/{airportCode}/{fromDateTime}",
+      "operationId": "OperationsFlightstatusArrivalsByAirportCodeAndFromDateTimeGet",
+      "summary": "Lufthansa Flight Status at Arrival Airport",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/operations/flightstatus/departures/{airportCode}/{fromDateTime}",
+      "operationId": "OperationsFlightstatusDeparturesByAirportCodeAndFromDateTimeGet",
+      "summary": "Lufthansa Flight Status at Departure Airport",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/operations/schedules/{origin}/{destination}/{fromDateTime}",
+      "operationId": "OperationsSchedulesFromDateTimeByOriginAndDestinationGet",
+      "summary": "Lufthansa Flight Schedules",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}",
+      "operationId": "CargoShipmentTrackingByAWBPrefixAndAWBNumberGet",
+      "summary": "Lufthansa Shipment Tracking",
+      "tags": [
+        "Cargo"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}",
+      "operationId": "CargoGetRouteFromDateProductCodeByOriginAndDestinationGet",
+      "summary": "Lufthansa Retrieve all flights",
+      "tags": [
+        "Cargo"
+      ]
+    }
+  ]
+}

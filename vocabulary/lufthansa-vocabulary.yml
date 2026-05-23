@@ -1,0 +1,9 @@
+name: Lufthansa Domain Vocabulary
+provider: Lufthansa
+providerId: lufthansa
+description: Tag-derived vocabulary for the Lufthansa API surface; sourced from openapi/ tags.
+terms:
+- term: Cargo
+- term: Offers
+- term: Operations
+- term: Reference Data

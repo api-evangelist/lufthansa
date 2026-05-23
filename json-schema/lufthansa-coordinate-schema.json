@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Coordinate",
+  "title": "Coordinate",
+  "type": "object",
+  "properties": {
+    "Latitude": {
+      "type": "number",
+      "description": "Decimal latitude. Range: -90 (South Pole) to +90 (North Pole), e.g. \u201c51.540\u201d.",
+      "format": "float"
+    },
+    "Longitude": {
+      "type": "number",
+      "description": "Decimal longitude. Range: -180 (West of Prime Meridian) to +180 (East of Prime Meridian).",
+      "format": "float"
+    }
+  },
+  "description": "Container for coordinates."
+}

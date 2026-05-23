@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Link",
+  "title": "Link",
+  "type": "object",
+  "properties": {
+    "@Href": {
+      "type": "string",
+      "description": "Link to actual a resource."
+    },
+    "@Rel": {
+      "type": "string",
+      "description": "Specifying kind of link such as \u2018self\u2019 (link that returned this response), \u2018alternate\u2019 (link that points to another resource) or \u2018related\u2019 (link that points to related resource)."
+    }
+  }
+}

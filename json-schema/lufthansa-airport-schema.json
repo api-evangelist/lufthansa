@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Airport",
+  "title": "Airport",
+  "type": "object",
+  "properties": {
+    "AirportCode": {
+      "type": "string",
+      "description": "3-letter IATA airport code, e.g. \u201cTXL\u201d."
+    },
+    "Position": {
+      "type": "object",
+      "properties": {
+        "Coordinate": {
+          "$ref": "#/components/schemas/Coordinate"
+        }
+      },
+      "description": "Physical location of an airport. This data section is optional and therefore not always present."
+    },
+    "CityCode": {
+      "type": "string",
+      "description": "3-letter IATA city code, e.g. \u201cBER\u201d."
+    },
+    "CountryCode": {
+      "type": "string",
+      "description": "2-letter ISO 3166-1 country code, e.g. \u201cDE\u201d."
+    },
+    "LocationType": {
+      "type": "string",
+      "description": " \u201cAirport\u201d, \u201cRailwayStation\u201d or \u201cBusStation\u201d."
+    },
+    "Names": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "array",
+          "description": "Array: language specific full name of airport.",
+          "items": {
+            "$ref": "#/components/schemas/Name"
+          }
+        }
+      },
+      "description": "Container for airport names."
+    },
+    "UtcOffset": {
+      "type": "number",
+      "description": "Hour offset of airport to UTC time zone",
+      "format": "float"
+    },
+    "TimeZoneId": {
+      "type": "string",
+      "description": "Time zone name airport is in"
+    }
+  },
+  "description": "Array of all available airports or one airport matching the request."
+}

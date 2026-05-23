@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AirportResource",
+  "title": "AirportResource",
+  "type": "object",
+  "properties": {
+    "Airports": {
+      "type": "object",
+      "properties": {
+        "Airport": {
+          "$ref": "#/components/schemas/Airport"
+        }
+      },
+      "description": "Container for airport elements."
+    },
+    "Meta": {
+      "type": "object",
+      "properties": {
+        "@Version": {
+          "type": "string"
+        },
+        "Link": {
+          "type": "array",
+          "description": "Array: links to resource itself and other related resources.",
+          "items": {
+            "$ref": "#/components/schemas/Link"
+          }
+        },
+        "TotalCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "description": "Container for meta links."
+    }
+  },
+  "description": "Root element of airport response."
+}
