@@ -1,0 +1,2454 @@
+{
+  "item": [
+    {
+      "id": "1d84b199-02d3-4959-9502-51590302b532",
+      "name": "Cargo",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f12ba148-e27f-4720-8ac0-f45a10a807fa",
+          "name": "Lufthansa Shipment Tracking",
+          "request": {
+            "name": "Lufthansa Shipment Tracking",
+            "description": {
+              "content": "With this tracking service you can easily retrieve your shipment or flight status information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cargo",
+                "shipmentTracking",
+                "{{aWBPrefix}}-{{aWBNumber}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2163f17-af8f-42f6-a73c-f842407d5d64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cargo",
+                    "shipmentTracking",
+                    "{{aWBPrefix}}-{{aWBNumber}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "364feb5f-99c1-4a4a-af74-ee72d20bb819",
+          "name": "Lufthansa Retrieve all flights",
+          "request": {
+            "name": "Lufthansa Retrieve all flights",
+            "description": {
+              "content": "Retrieve a list of all possible flights (both direct and connecting) between two airports on a given date. Routes are available for today and up to days in the future.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cargo",
+                "getRoute",
+                "{{origin}}-{{destination}}",
+                ":fromDate",
+                ":productCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromDate",
+                  "description": "(Required) Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code for requested service and specials : 3-letter eg: YNZ"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77c5fa5d-a24d-4ebf-b3d7-e2e84dfb095b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cargo",
+                    "getRoute",
+                    "{{origin}}-{{destination}}",
+                    ":fromDate",
+                    ":productCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromDate",
+                      "description": "(Required) Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code for requested service and specials : 3-letter eg: YNZ"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "824366ec-abd0-4a49-94de-abc71438cc51",
+      "name": "Offers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62fa138e-3ca1-48ed-9a1b-d053f0b079d3",
+          "name": "Lufthansa Seat Maps",
+          "request": {
+            "name": "Lufthansa Seat Maps",
+            "description": {
+              "content": "Cabin layout and seat characteristics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offers",
+                "seatmaps",
+                ":flightNumber",
+                ":origin",
+                ":destination",
+                ":date",
+                ":cabinClass"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flightNumber",
+                  "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH2037')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "origin",
+                  "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destination",
+                  "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Departure date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cabinClass",
+                  "description": "(Required) Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c05de729-7e64-468d-82f3-989222d48df2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offers",
+                    "seatmaps",
+                    ":flightNumber",
+                    ":origin",
+                    ":destination",
+                    ":date",
+                    ":cabinClass"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flightNumber",
+                      "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH2037')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "origin",
+                      "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Departure date (YYYY-MM-DD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cabinClass",
+                      "description": "(Required) Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a088a20-027a-48b1-9398-34d245d2bb9f",
+          "name": "Lufthansa Lounges",
+          "request": {
+            "name": "Lufthansa Lounges",
+            "description": {
+              "content": "Lounge information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offers",
+                "lounges",
+                ":location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cabinClass",
+                  "value": "<string>",
+                  "description": "Cabin class: 'M', 'E', 'C', 'F' (Acceptable values are: \"\", \"M\", \"E\", \"C\", \"F\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "tierCode",
+                  "value": "<string>",
+                  "description": "Frequent flyer level ('FTL', 'SGC', 'SEN', 'HON') (Acceptable values are: \"\", \"FTL\", \"SGC\", \"SEN\", \"HON\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Language code."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) 3-leter IATA airport or city code (e.g. 'ZRH')"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e1ff78a2-6130-4d48-b23a-b6521756b25c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offers",
+                    "lounges",
+                    ":location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cabinClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tierCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) 3-leter IATA airport or city code (e.g. 'ZRH')"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b321b8aa-7340-48d1-8b90-5ff5e267f4b5",
+      "name": "Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c904591e-70a5-48ab-a1bf-ff314f033c4f",
+          "name": "Lufthansa Flight Status",
+          "request": {
+            "name": "Lufthansa Flight Status",
+            "description": {
+              "content": "Status of a particular flight (boarding, delayed, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operations",
+                "flightstatus",
+                ":flightNumber",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flightNumber",
+                  "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH400')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) The departure date (YYYY-MM-DD) in the local time of the departure airport"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd55669f-b984-4782-8f4b-02514d81c5a8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "flightstatus",
+                    ":flightNumber",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flightNumber",
+                      "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH400')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) The departure date (YYYY-MM-DD) in the local time of the departure airport"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d61f5863-0f2a-46a1-8fc9-3099bb0749c4",
+          "name": "Lufthansa Flight Status by Route",
+          "request": {
+            "name": "Lufthansa Flight Status by Route",
+            "description": {
+              "content": "Status of flights between a given origin and destination on a given date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operations",
+                "flightstatus",
+                "route",
+                ":origin",
+                ":destination",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "origin",
+                  "description": "(Required) 3-letter IATA airport (e.g. 'FRA')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destination",
+                  "description": "(Required) 3-letter IATA airport code (e.g. 'JFK')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Departure date (YYYY-MM-DD) in local time of departure airport"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2cef78ef-4d28-4b4c-8f89-e06743be0d7e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "flightstatus",
+                    "route",
+                    ":origin",
+                    ":destination",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "origin",
+                      "description": "(Required) 3-letter IATA airport (e.g. 'FRA')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) 3-letter IATA airport code (e.g. 'JFK')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Departure date (YYYY-MM-DD) in local time of departure airport"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d853f2c-446d-4598-991a-b5e28f7402bc",
+          "name": "Lufthansa Flight Status at Arrival Airport",
+          "request": {
+            "name": "Lufthansa Flight Status at Arrival Airport",
+            "description": {
+              "content": "Status of all arrivals at a given airport up to 4 hours from the provided date time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operations",
+                "flightstatus",
+                "arrivals",
+                ":airportCode",
+                ":fromDateTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "airportCode",
+                  "description": "(Required) 3-letter IATA aiport code (e.g. 'ZRH')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromDateTime",
+                  "description": "(Required) Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ff13f0ee-3be6-46fe-a852-39f919896164",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "flightstatus",
+                    "arrivals",
+                    ":airportCode",
+                    ":fromDateTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "airportCode",
+                      "description": "(Required) 3-letter IATA aiport code (e.g. 'ZRH')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromDateTime",
+                      "description": "(Required) Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f696a7f8-6330-4674-9319-d1b5d420e8ce",
+          "name": "Lufthansa Flight Status at Departure Airport",
+          "request": {
+            "name": "Lufthansa Flight Status at Departure Airport",
+            "description": {
+              "content": "Status of all departures from a given airport up to 4 hours from the provided date time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operations",
+                "flightstatus",
+                "departures",
+                ":airportCode",
+                ":fromDateTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "airportCode",
+                  "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'HAM')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromDateTime",
+                  "description": "(Required) Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b5a205f-98d3-4db9-95bf-46987dd32161",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "flightstatus",
+                    "departures",
+                    ":airportCode",
+                    ":fromDateTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "airportCode",
+                      "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'HAM')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromDateTime",
+                      "description": "(Required) Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "317648a6-fc56-4698-b637-4d4dfbfe3610",
+          "name": "Lufthansa Flight Schedules",
+          "request": {
+            "name": "Lufthansa Flight Schedules",
+            "description": {
+              "content": "Scheduled flights between given airports on a given date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "operations",
+                "schedules",
+                ":origin",
+                ":destination",
+                ":fromDateTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directFlights",
+                  "value": "<boolean>",
+                  "description": "Show only direct flights (false=0, true=1). Default is false"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "origin",
+                  "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'ZRH')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destination",
+                  "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'FRA')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromDateTime",
+                  "description": "(Required) Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided, time is assumed to be 00:01"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f89b236f-2819-4828-a553-05bc5dc4bd6e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "schedules",
+                    ":origin",
+                    ":destination",
+                    ":fromDateTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directFlights",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "origin",
+                      "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'ZRH')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'FRA')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromDateTime",
+                      "description": "(Required) Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided, time is assumed to be 00:01"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2c2cfc1b-40da-4d52-8e72-433d9706c8b7",
+      "name": "Reference Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89c10f41-baf5-488e-bec5-43a457d87d6e",
+          "name": "Lufthansa Countries",
+          "request": {
+            "name": "Lufthansa Countries",
+            "description": {
+              "content": "List all countries or one specific country. It is possible to request the response in a specific language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "countries",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "2 letter ISO 3166-1 language code"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "DK",
+                  "key": "countryCode",
+                  "description": "(Required) 2-letter ISO 3166-1 country code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c38308e4-c44b-4aa5-a753-5a575be78cbf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "countries",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "DK",
+                      "key": "countryCode",
+                      "description": "(Required) 2-letter ISO 3166-1 country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a549dbc-5ca4-49e3-a341-f4bcb8e20aad",
+          "name": "Lufthansa Cities",
+          "request": {
+            "name": "Lufthansa Cities",
+            "description": {
+              "content": "List all cities or one specific city. It is possible to request the response in a specific language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "cities",
+                ":cityCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "2 letter ISO 3166-1 language code"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "BER",
+                  "key": "cityCode",
+                  "description": "(Required) 3-letter IATA city code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "23e5a8b0-1c2c-4e35-a86b-506fe61e9d59",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "cities",
+                    ":cityCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "BER",
+                      "key": "cityCode",
+                      "description": "(Required) 3-letter IATA city code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7086e52d-149e-4392-a14a-c91e19009b4a",
+          "name": "Lufthansa Airports",
+          "request": {
+            "name": "Lufthansa Airports",
+            "description": {
+              "content": "List all airports or one specific airport. All airports response is very large. It is possible to request the response in a specific language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "airports",
+                ":airportCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "2-letter ISO 3166-1 language code"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records skipped. Defaults to 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "LHoperated",
+                  "value": "<boolean>",
+                  "description": "Restrict the results to locations with flights operated by LH (false=0, true=1)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "TXL",
+                  "key": "airportCode",
+                  "description": "(Required) 3-letter IATA airport code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fda44ce9-803d-41df-b858-93b22828a9cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "airports",
+                    ":airportCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "LHoperated",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "TXL",
+                      "key": "airportCode",
+                      "description": "(Required) 3-letter IATA airport code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AirportResource\": {\n    \"Airports\": {\n      \"Airport\": {\n        \"AirportCode\": \"string\",\n        \"Position\": {\n          \"Coordinate\": {\n            \"Latitude\": 9645.1836342947,\n            \"Longitude\": 4761.098263099418\n          }\n        },\n        \"CityCode\": \"string\",\n        \"CountryCode\": \"string\",\n        \"LocationType\": \"string\",\n        \"Names\": {\n          \"Name\": [\n            {\n              \"@LanguageCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"$\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"@LanguageCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"$\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"UtcOffset\": 9260.682929364018,\n        \"TimeZoneId\": \"string\"\n      }\n    },\n    \"Meta\": {\n      \"@Version\": \"string\",\n      \"Link\": [\n        {\n          \"@Href\": \"string\",\n          \"@Rel\": \"string\"\n        },\n        {\n          \"@Href\": \"string\",\n          \"@Rel\": \"string\"\n        }\n      ],\n      \"TotalCount\": 2024\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a6a381b-f75e-435c-b712-98ec0e99a43d",
+          "name": "Lufthansa Nearest Airports",
+          "request": {
+            "name": "Lufthansa Nearest Airports",
+            "description": {
+              "content": "List the 5 closest airports to the given latitude and longitude, irrespective of the radius of the reference point.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "airports",
+                "nearest",
+                "{{latitude}},{{longitude}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "2 letter ISO 3166-1 language code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ca1fb6ce-6500-4eb9-bac5-d6cc139f2c6f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "airports",
+                    "nearest",
+                    "{{latitude}},{{longitude}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69049fe3-0b46-425a-8092-eac3c8e16aa6",
+          "name": "Lufthansa Airlines",
+          "request": {
+            "name": "Lufthansa Airlines",
+            "description": {
+              "content": "List all airlines or one specific airline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "airlines",
+                ":airlineCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "LH",
+                  "key": "airlineCode",
+                  "description": "(Required) 2-character IATA airline/carrier code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dd11e221-5f3e-4b34-b116-cf804c9b8409",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "airlines",
+                    ":airlineCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "LH",
+                      "key": "airlineCode",
+                      "description": "(Required) 2-character IATA airline/carrier code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c84a392-39df-4b86-9563-a511791a9448",
+          "name": "Lufthansa Aircraft",
+          "request": {
+            "name": "Lufthansa Aircraft",
+            "description": {
+              "content": "List all aircraft types or one specific aircraft type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "references",
+                "aircraft",
+                ":aircraftCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records skipped. Defaults to 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "33P",
+                  "key": "aircraftCode",
+                  "description": "(Required) 3-character IATA aircraft code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e916588f-67e6-4fd3-846d-cb6a440c368e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "references",
+                    "aircraft",
+                    ":aircraftCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "33P",
+                      "key": "aircraftCode",
+                      "description": "(Required) 3-character IATA aircraft code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.lufthansa.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Latitude in decimal format to at most 3 decimal places",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "latitude"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Longitude in decimal format to at most 3 decimal places",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "longitude"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) aWBPrefix : Represents the airline that is the owner of this AWB, i.e. \"020\" = Lufthansa Cargo, format : [0-9]{3} e.g. 020",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "aWBPrefix"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "aWBNumber"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Departure Airport : 3-letter IATA airport code, e.g. FRA.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "origin"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Arrival airport : 3-letter IATA airport code, e.g. HKG.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "destination"
+    }
+  ],
+  "info": {
+    "_postman_id": "f045c15f-06ae-4e01-8240-4893d6aed064",
+    "name": "Lufthansa LH Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
