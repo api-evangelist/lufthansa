@@ -1,7 +1,7 @@
 aid: lufthansa
 name: Lufthansa
 url: https://raw.githubusercontent.com/api-evangelist/lufthansa/refs/heads/main/apis.yml
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 kind: contract
 position: Consuming
 access: 3rd-Party
@@ -24,7 +24,7 @@ apis:
       The Lufthansa Public API provides reference data for countries, cities, airports, airlines, and aircraft, plus
       flight schedules and real-time flight status by route, arrival airport, or departure airport, customer flight
       information, seat maps, and lounge data.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
     baseURL: https://api.lufthansa.com/v1
     tags:
@@ -48,7 +48,7 @@ apis:
     description: >-
       The Lufthansa Partner API exposes deeplinks, fares, pricing offers, and seat details for integration partners. NDC
       capabilities including Smart Offer, NDC Bonus, Servicing, and Technology are part of the partner program.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
     baseURL: https://api.lufthansa.com/v1
     tags:
@@ -67,7 +67,7 @@ apis:
     description: >-
       The FlightOps and Crew API provides crew-specific services including check-in times, duty events, and weather
       information for operational use cases.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
     baseURL: https://api.lufthansa.com/v1
     tags:
@@ -82,7 +82,7 @@ apis:
   - aid: lufthansa:cargo
     name: Lufthansa Cargo API
     description: The Lufthansa Cargo API provides shipment tracking and LH CARGO flight routings.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
     baseURL: https://api.lufthansa.com/v1
     tags:
@@ -99,7 +99,7 @@ apis:
     description: >-
       The Notifications API delivers FlightUpdate notifications and JWT-based authentication tokens for streaming flight
       events.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.lufthansa.com
     baseURL: https://api.lufthansa.com/v1
     tags:
