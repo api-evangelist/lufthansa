@@ -125,7 +125,7 @@ common:
     url: https://developer.lufthansa.com/docs/read/api_details
   - type: Authentication
     url: https://developer.lufthansa.com/docs/read/Authentication
-  - type: SignUp
+  - type: Signup
     url: https://developer.lufthansa.com/user/register
   - type: TermsOfService
     url: https://developer.lufthansa.com/docs/read/General_Terms_and_Conditions
