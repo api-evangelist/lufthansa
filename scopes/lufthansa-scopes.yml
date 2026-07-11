@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/lufthansa-openapi.yml
+schemes:
+- name: auth
+  source: openapi/lufthansa-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.lufthansa.com/v1/oauth/token
+    tokenUrl: https://api.lufthansa.com/v1/oauth/token
+scopes:
+- scope: read:LH Open API
+  description: read access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/lufthansa-openapi.yml

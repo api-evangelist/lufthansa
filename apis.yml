@@ -113,6 +113,8 @@ apis:
       - type: Portal
         url: https://developer.lufthansa.com
 common:
+  - type: OAuthScopes
+    url: scopes/lufthansa-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/lufthansa
   - type: LinkedIn
