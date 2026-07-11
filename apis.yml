@@ -113,6 +113,10 @@ apis:
       - type: Portal
         url: https://developer.lufthansa.com
 common:
+  - type: DomainSecurity
+    url: security/lufthansa-domain-security.yml
+  - type: Authentication
+    url: authentication/lufthansa-authentication.yml
   - type: OAuthScopes
     url: scopes/lufthansa-scopes.yml
   - type: GitHubOrganization
