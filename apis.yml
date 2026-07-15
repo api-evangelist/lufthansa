@@ -113,6 +113,8 @@ apis:
       - type: Portal
         url: https://developer.lufthansa.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/lufthansa-agentic-access.yml
   - type: DomainSecurity
     url: security/lufthansa-domain-security.yml
   - type: Authentication

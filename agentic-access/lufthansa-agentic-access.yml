@@ -1,0 +1,164 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/lufthansa-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 15
+  by_action_class:
+    connected: 15
+  by_consequence:
+    read: 15
+  human_in_the_loop_required: 0
+operations:
+- path: /references/countries/{countryCode}
+  method: get
+  operationId: ReferencesCountriesByCountryCodeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /references/cities/{cityCode}
+  method: get
+  operationId: ReferencesCitiesByCityCodeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /references/airports/{airportCode}
+  method: get
+  operationId: ReferencesAirportsByAirportCodeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /references/airports/nearest/{latitude},{longitude}
+  method: get
+  operationId: ReferencesAirportsNearestByLatitudeAndLongitudeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /references/airlines/{airlineCode}
+  method: get
+  operationId: ReferencesAirlinesByAirlineCodeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /references/aircraft/{aircraftCode}
+  method: get
+  operationId: ReferencesAircraftByAircraftCodeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}
+  method: get
+  operationId: OffersSeatmapsDestinationDateCabinClassByFlightNumberAndOriginGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offers/lounges/{location}
+  method: get
+  operationId: OffersLoungesByLocationGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operations/flightstatus/{flightNumber}/{date}
+  method: get
+  operationId: OperationsFlightstatusByFlightNumberAndDateGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operations/flightstatus/route/{origin}/{destination}/{date}
+  method: get
+  operationId: OperationsFlightstatusRouteDateByOriginAndDestinationGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operations/flightstatus/arrivals/{airportCode}/{fromDateTime}
+  method: get
+  operationId: OperationsFlightstatusArrivalsByAirportCodeAndFromDateTimeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operations/flightstatus/departures/{airportCode}/{fromDateTime}
+  method: get
+  operationId: OperationsFlightstatusDeparturesByAirportCodeAndFromDateTimeGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operations/schedules/{origin}/{destination}/{fromDateTime}
+  method: get
+  operationId: OperationsSchedulesFromDateTimeByOriginAndDestinationGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}
+  method: get
+  operationId: CargoShipmentTrackingByAWBPrefixAndAWBNumberGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}
+  method: get
+  operationId: CargoGetRouteFromDateProductCodeByOriginAndDestinationGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
