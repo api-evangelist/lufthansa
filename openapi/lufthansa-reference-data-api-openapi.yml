@@ -1,0 +1,428 @@
+openapi: 3.0.1
+info:
+  title: Lufthansa LH Public Cargo Reference Data API
+  description: ''
+  license:
+    name: LH
+    url: https://developer.lufthansa.com
+  version: '1.0'
+servers:
+- url: https://api.lufthansa.com/v1
+tags:
+- name: Reference Data
+paths:
+  /references/countries/{countryCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Countries
+      description: List all countries or one specific country. It is possible to request the response in a specific language.
+      operationId: ReferencesCountriesByCountryCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: path
+        description: 2-letter ISO 3166-1 country code
+        required: true
+        schema:
+          type: string
+          default: DK
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)
+        schema:
+          type: string
+          default: '20'
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/cities/{cityCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Cities
+      description: List all cities or one specific city. It is possible to request the response in a specific language.
+      operationId: ReferencesCitiesByCityCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: cityCode
+        in: path
+        description: 3-letter IATA city code
+        required: true
+        schema:
+          type: string
+          default: BER
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)
+        schema:
+          type: string
+          default: '20'
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airports/{airportCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Airports
+      description: List all airports or one specific airport. All airports response is very large. It is possible to request the response in a specific language.
+      operationId: ReferencesAirportsByAirportCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: airportCode
+        in: path
+        description: 3-letter IATA airport code
+        required: true
+        schema:
+          type: string
+          default: TXL
+      - name: lang
+        in: query
+        description: 2-letter ISO 3166-1 language code
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)
+        schema:
+          type: string
+          default: '20'
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: '0'
+      - name: LHoperated
+        in: query
+        description: Restrict the results to locations with flights operated by LH (false=0, true=1)
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirportResponse'
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airports/nearest/{latitude},{longitude}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Nearest Airports
+      description: List the 5 closest airports to the given latitude and longitude, irrespective of the radius of the reference point.
+      operationId: ReferencesAirportsNearestByLatitudeAndLongitudeGet
+      parameters:
+      - name: latitude
+        in: path
+        description: Latitude in decimal format to at most 3 decimal places
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: longitude
+        in: path
+        description: Longitude in decimal format to at most 3 decimal places
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: 2 letter ISO 3166-1 language code
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/airlines/{airlineCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Airlines
+      description: List all airlines or one specific airline.
+      operationId: ReferencesAirlinesByAirlineCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: airlineCode
+        in: path
+        description: 2-character IATA airline/carrier code
+        required: true
+        schema:
+          type: string
+          default: LH
+      - name: limit
+        in: query
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)
+        schema:
+          type: string
+          default: '20'
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /references/aircraft/{aircraftCode}:
+    get:
+      tags:
+      - Reference Data
+      summary: Lufthansa Aircraft
+      description: List all aircraft types or one specific aircraft type.
+      operationId: ReferencesAircraftByAircraftCodeGet
+      parameters:
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: aircraftCode
+        in: path
+        description: 3-character IATA aircraft code
+        required: true
+        schema:
+          type: string
+          default: 33P
+      - name: limit
+        in: query
+        description: Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)
+        schema:
+          type: string
+          default: '20'
+      - name: offset
+        in: query
+        description: Number of records skipped. Defaults to 0
+        schema:
+          type: string
+          default: '0'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+components:
+  schemas:
+    AirportResponse:
+      type: object
+      properties:
+        AirportResource:
+          $ref: '#/components/schemas/AirportResource'
+    Airport:
+      type: object
+      properties:
+        AirportCode:
+          type: string
+          description: 3-letter IATA airport code, e.g. “TXL”.
+        Position:
+          type: object
+          properties:
+            Coordinate:
+              $ref: '#/components/schemas/Coordinate'
+          description: Physical location of an airport. This data section is optional and therefore not always present.
+        CityCode:
+          type: string
+          description: 3-letter IATA city code, e.g. “BER”.
+        CountryCode:
+          type: string
+          description: 2-letter ISO 3166-1 country code, e.g. “DE”.
+        LocationType:
+          type: string
+          description: ' “Airport”, “RailwayStation” or “BusStation”.'
+        Names:
+          type: object
+          properties:
+            Name:
+              type: array
+              description: 'Array: language specific full name of airport.'
+              items:
+                $ref: '#/components/schemas/Name'
+          description: Container for airport names.
+        UtcOffset:
+          type: number
+          description: Hour offset of airport to UTC time zone
+          format: float
+        TimeZoneId:
+          type: string
+          description: Time zone name airport is in
+      description: Array of all available airports or one airport matching the request.
+    AirportResource:
+      type: object
+      properties:
+        Airports:
+          type: object
+          properties:
+            Airport:
+              $ref: '#/components/schemas/Airport'
+          description: Container for airport elements.
+        Meta:
+          type: object
+          properties:
+            '@Version':
+              type: string
+            Link:
+              type: array
+              description: 'Array: links to resource itself and other related resources.'
+              items:
+                $ref: '#/components/schemas/Link'
+            TotalCount:
+              type: integer
+              format: int32
+          description: Container for meta links.
+      description: Root element of airport response.
+    Name:
+      type: object
+      properties:
+        '@LanguageCode':
+          type: string
+        $:
+          type: string
+      description: 2-letter ISO 639-1 language code for the corresponding item.
+    Coordinate:
+      type: object
+      properties:
+        Latitude:
+          type: number
+          description: 'Decimal latitude. Range: -90 (South Pole) to +90 (North Pole), e.g. “51.540”.'
+          format: float
+        Longitude:
+          type: number
+          description: 'Decimal longitude. Range: -180 (West of Prime Meridian) to +180 (East of Prime Meridian).'
+          format: float
+      description: Container for coordinates.
+    Link:
+      type: object
+      properties:
+        '@Href':
+          type: string
+          description: Link to actual a resource.
+        '@Rel':
+          type: string
+          description: Specifying kind of link such as ‘self’ (link that returned this response), ‘alternate’ (link that points to another resource) or ‘related’ (link that points to related resource).
+  securitySchemes:
+    auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.lufthansa.com/v1/oauth/token
+          tokenUrl: https://api.lufthansa.com/v1/oauth/token
+          scopes:
+            read:LH Open API: read access

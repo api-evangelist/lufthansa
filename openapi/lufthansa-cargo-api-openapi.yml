@@ -1,0 +1,135 @@
+openapi: 3.0.1
+info:
+  title: Lufthansa LH Public Cargo API
+  description: ''
+  license:
+    name: LH
+    url: https://developer.lufthansa.com
+  version: '1.0'
+servers:
+- url: https://api.lufthansa.com/v1
+tags:
+- name: Cargo
+paths:
+  /cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}:
+    get:
+      tags:
+      - Cargo
+      summary: Lufthansa Shipment Tracking
+      description: With this tracking service you can easily retrieve your shipment or flight status information.
+      operationId: CargoShipmentTrackingByAWBPrefixAndAWBNumberGet
+      parameters:
+      - name: aWBPrefix
+        in: path
+        description: 'aWBPrefix : Represents the airline that is the owner of this AWB, i.e. "020" = Lufthansa Cargo, format : [0-9]{3} e.g. 020'
+        required: true
+        schema:
+          type: string
+      - name: aWBNumber
+        in: path
+        description: 'aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050'
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}:
+    get:
+      tags:
+      - Cargo
+      summary: Lufthansa Retrieve all flights
+      description: Retrieve a list of all possible flights (both direct and connecting) between two airports on a given date. Routes are available for today and up to days in the future.
+      operationId: CargoGetRouteFromDateProductCodeByOriginAndDestinationGet
+      parameters:
+      - name: origin
+        in: path
+        description: 'Departure Airport : 3-letter IATA airport code, e.g. FRA.'
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: 'Arrival airport : 3-letter IATA airport code, e.g. HKG.'
+        required: true
+        schema:
+          type: string
+      - name: fromDate
+        in: path
+        description: 'Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15'
+        required: true
+        schema:
+          type: string
+      - name: productCode
+        in: path
+        description: 'Product code for requested service and specials : 3-letter eg: YNZ'
+        required: true
+        schema:
+          type: string
+          enum:
+          - FAN
+          - FCO
+          - FCP
+          - FDG
+          - FTF
+          - FUN
+          - FWN
+          - YCO
+          - YCP
+          - YDG
+          - YNB
+          - YNZ
+          - YTF
+          - YUN
+          - ZXB
+          - ZXF
+          - ZXR
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+components:
+  securitySchemes:
+    auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.lufthansa.com/v1/oauth/token
+          tokenUrl: https://api.lufthansa.com/v1/oauth/token
+          scopes:
+            read:LH Open API: read access

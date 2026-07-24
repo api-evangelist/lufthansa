@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  title: Lufthansa LH Public Cargo Offers API
+  description: ''
+  license:
+    name: LH
+    url: https://developer.lufthansa.com
+  version: '1.0'
+servers:
+- url: https://api.lufthansa.com/v1
+tags:
+- name: Offers
+paths:
+  /offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}:
+    get:
+      tags:
+      - Offers
+      summary: Lufthansa Seat Maps
+      description: Cabin layout and seat characteristics.
+      operationId: OffersSeatmapsDestinationDateCabinClassByFlightNumberAndOriginGet
+      parameters:
+      - name: flightNumber
+        in: path
+        description: Flight number including carrier code and any suffix (e.g. 'LH2037')
+        required: true
+        schema:
+          type: string
+      - name: origin
+        in: path
+        description: Departure airport. 3-letter IATA airport code (e.g. 'TXL')
+        required: true
+        schema:
+          type: string
+      - name: destination
+        in: path
+        description: Destination airport. 3-letter IATA airport code (e.g. 'MUC')
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        description: Departure date (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+      - name: cabinClass
+        in: path
+        description: 'Cabin class: ''M'', ''E'', ''C'', ''F''. Some flights have fewer classes (Acceptable values are: "M", "E", "C", "F")'
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /offers/lounges/{location}:
+    get:
+      tags:
+      - Offers
+      summary: Lufthansa Lounges
+      description: Lounge information
+      operationId: OffersLoungesByLocationGet
+      parameters:
+      - name: location
+        in: path
+        description: 3-leter IATA airport or city code (e.g. 'ZRH')
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: 'http header: application/json or application/xml (Acceptable values are: "application/json", "application/xml")'
+        required: true
+        schema:
+          type: string
+      - name: cabinClass
+        in: query
+        description: 'Cabin class: ''M'', ''E'', ''C'', ''F'' (Acceptable values are: "", "M", "E", "C", "F")'
+        schema:
+          type: string
+      - name: tierCode
+        in: query
+        description: 'Frequent flyer level (''FTL'', ''SGC'', ''SEN'', ''HON'') (Acceptable values are: "", "FTL", "SGC", "SEN", "HON")'
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Language code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+components:
+  securitySchemes:
+    auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.lufthansa.com/v1/oauth/token
+          tokenUrl: https://api.lufthansa.com/v1/oauth/token
+          scopes:
+            read:LH Open API: read access
