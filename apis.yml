@@ -1,7 +1,20 @@
 aid: lufthansa
 name: Lufthansa
 url: https://raw.githubusercontent.com/api-evangelist/lufthansa/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Free · Requires approval
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lufthansa.png
 kind: contract
 position: Consuming
 access: 3rd-Party
@@ -18,100 +31,140 @@ description: >-
   Open API developer portal exposes reference data, flight operations, offers, notifications, and cargo APIs secured
   with OAuth2 for partner and public consumers.
 apis:
-  - aid: lufthansa:public-api
-    name: Lufthansa Public API
-    description: >-
-      The Lufthansa Public API provides reference data for countries, cities, airports, airlines, and aircraft, plus
-      flight schedules and real-time flight status by route, arrival airport, or departure airport, customer flight
-      information, seat maps, and lounge data.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com
-    baseURL: https://api.lufthansa.com/v1
-    tags:
-      - Airlines
-      - Flights
-      - Reference Data
-      - Flight Status
-      - Seat Maps
-      - Lounges
-    properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/docs/read/api_details
-      - type: Portal
-        url: https://developer.lufthansa.com
-      - type: Authentication
-        url: https://developer.lufthansa.com/docs/read/Authentication
-      - type: OpenAPI
-        url: openapi/lufthansa-openapi.yml
-  - aid: lufthansa:partner-api
-    name: Lufthansa Partner API
-    description: >-
-      The Lufthansa Partner API exposes deeplinks, fares, pricing offers, and seat details for integration partners. NDC
-      capabilities including Smart Offer, NDC Bonus, Servicing, and Technology are part of the partner program.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com
-    baseURL: https://api.lufthansa.com/v1
-    tags:
-      - Partner
-      - NDC
-      - Fares
-      - Pricing
-      - Offers
-    properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/docs/read/api_details
-      - type: Portal
-        url: https://developer.lufthansa.com
-  - aid: lufthansa:flightops-crew
-    name: Lufthansa FlightOps and Crew API
-    description: >-
-      The FlightOps and Crew API provides crew-specific services including check-in times, duty events, and weather
-      information for operational use cases.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com
-    baseURL: https://api.lufthansa.com/v1
-    tags:
-      - Crew
-      - Flight Operations
-      - Weather
-    properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/docs/read/api_details
-      - type: Portal
-        url: https://developer.lufthansa.com
-  - aid: lufthansa:cargo
-    name: Lufthansa Cargo API
-    description: The Lufthansa Cargo API provides shipment tracking and LH CARGO flight routings.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com
-    baseURL: https://api.lufthansa.com/v1
-    tags:
-      - Cargo
-      - Shipment Tracking
-      - Logistics
-    properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/docs/read/api_details
-      - type: Portal
-        url: https://developer.lufthansa.com
-  - aid: lufthansa:notifications
-    name: Lufthansa Notifications API
-    description: >-
-      The Notifications API delivers FlightUpdate notifications and JWT-based authentication tokens for streaming flight
-      events.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.lufthansa.com
-    baseURL: https://api.lufthansa.com/v1
-    tags:
-      - Notifications
-      - JWT
-      - Webhooks
-      - Flight Updates
-    properties:
-      - type: Documentation
-        url: https://developer.lufthansa.com/docs/read/api_details
-      - type: Portal
-        url: https://developer.lufthansa.com
+- aid: lufthansa:partner-api
+  name: Lufthansa Partner API
+  description: >-
+    The Lufthansa Partner API exposes deeplinks, fares, pricing offers, and seat details for integration
+    partners. NDC capabilities including Smart Offer, NDC Bonus, Servicing, and Technology are part of
+    the partner program.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Partner
+  - NDC
+  - Fares
+  - Pricing
+  - Offers
+  properties:
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+- aid: lufthansa:flightops-crew
+  name: Lufthansa FlightOps and Crew API
+  description: >-
+    The FlightOps and Crew API provides crew-specific services including check-in times, duty events,
+    and weather information for operational use cases.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Crew
+  - Flight Operations
+  - Weather
+  properties:
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+- aid: lufthansa:cargo
+  name: Lufthansa Cargo API
+  description: The Lufthansa Cargo API provides shipment tracking and LH CARGO flight routings.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Cargo
+  - Shipment Tracking
+  - Logistics
+  properties:
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+- aid: lufthansa:notifications
+  name: Lufthansa Notifications API
+  description: >-
+    The Notifications API delivers FlightUpdate notifications and JWT-based authentication tokens for
+    streaming flight events.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Notifications
+  - JWT
+  - Webhooks
+  - Flight Updates
+  properties:
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+- aid: lufthansa:lufthansa-cargo-api
+  name: Lufthansa Cargo API
+  description: The Cargo API from Lufthansa — 2 operation(s) for cargo.
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Cargo
+  properties:
+  - type: OpenAPI
+    url: openapi/lufthansa-cargo-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+  - type: Authentication
+    url: https://developer.lufthansa.com/docs/read/Authentication
+- aid: lufthansa:lufthansa-offers-api
+  name: Lufthansa Offers API
+  description: The Offers API from Lufthansa — 2 operation(s) for offers.
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/lufthansa-offers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+  - type: Authentication
+    url: https://developer.lufthansa.com/docs/read/Authentication
+- aid: lufthansa:lufthansa-operations-api
+  name: Lufthansa Operations API
+  description: The Operations API from Lufthansa — 5 operation(s) for operations.
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/lufthansa-operations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+  - type: Authentication
+    url: https://developer.lufthansa.com/docs/read/Authentication
+- aid: lufthansa:lufthansa-reference-data-api
+  name: Lufthansa Reference Data API
+  description: The Reference Data API from Lufthansa — 6 operation(s) for reference data.
+  humanURL: https://developer.lufthansa.com
+  baseURL: https://api.lufthansa.com/v1
+  tags:
+  - Reference Data
+  properties:
+  - type: OpenAPI
+    url: openapi/lufthansa-reference-data-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lufthansa.com/docs/read/api_details
+  - type: Portal
+    url: https://developer.lufthansa.com
+  - type: Authentication
+    url: https://developer.lufthansa.com/docs/read/Authentication
 common:
   - type: AgenticAccess
     url: agentic-access/lufthansa-agentic-access.yml
