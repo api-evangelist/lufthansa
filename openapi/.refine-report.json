@@ -1,0 +1,20 @@
+{
+  "provider": "lufthansa",
+  "sources": [
+    "lufthansa-cargo-api-openapi.yml",
+    "lufthansa-offers-api-openapi.yml",
+    "lufthansa-operations-api-openapi.yml",
+    "lufthansa-reference-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "lufthansa-cargo-api-openapi.yml",
+    "lufthansa-offers-api-openapi.yml",
+    "lufthansa-operations-api-openapi.yml",
+    "lufthansa-reference-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
