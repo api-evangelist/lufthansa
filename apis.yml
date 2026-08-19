@@ -25,7 +25,7 @@ tags:
   - Flights
 created: '2024-07-02'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >-
   The Lufthansa Group is a global aviation group that plays a leading role in its European home market. The Lufthansa
   Open API developer portal exposes reference data, flight operations, offers, notifications, and cargo APIs secured
