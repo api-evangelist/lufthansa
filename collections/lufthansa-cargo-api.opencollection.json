@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lufthansa LH Public Cargo API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cargo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lufthansa Shipment Tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/cargo/shipmentTracking/:aWBPrefix-:aWBNumber",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aWBPrefix",
+                "value": "",
+                "type": "path",
+                "description": "aWBPrefix : Represents the airline that is the owner of this AWB, i.e. \"020\" = Lufthansa Cargo, format : [0-9]{3} e.g. 020"
+              },
+              {
+                "name": "aWBNumber",
+                "value": "",
+                "type": "path",
+                "description": "aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "With this tracking service you can easily retrieve your shipment or flight status information."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Retrieve all flights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/cargo/getRoute/:origin-:destination/:fromDate/:productCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "origin",
+                "value": "",
+                "type": "path",
+                "description": "Departure Airport : 3-letter IATA airport code, e.g. FRA."
+              },
+              {
+                "name": "destination",
+                "value": "",
+                "type": "path",
+                "description": "Arrival airport : 3-letter IATA airport code, e.g. HKG."
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "path",
+                "description": "Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+              },
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code for requested service and specials : 3-letter eg: YNZ"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of all possible flights (both direct and connecting) between two airports on a given date. Routes are available for today and up to days in the future."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

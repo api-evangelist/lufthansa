@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lufthansa LH Public Cargo Reference Data API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lufthansa Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/countries/:countryCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "path",
+                "description": "2-letter ISO 3166-1 country code"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "2 letter ISO 3166-1 language code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records skipped. Defaults to 0"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all countries or one specific country. It is possible to request the response in a specific language."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Cities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/cities/:cityCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cityCode",
+                "value": "",
+                "type": "path",
+                "description": "3-letter IATA city code"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "2 letter ISO 3166-1 language code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records skipped. Defaults to 0"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all cities or one specific city. It is possible to request the response in a specific language."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Airports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/airports/:airportCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "airportCode",
+                "value": "",
+                "type": "path",
+                "description": "3-letter IATA airport code"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "2-letter ISO 3166-1 language code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records skipped. Defaults to 0"
+              },
+              {
+                "name": "LHoperated",
+                "value": "",
+                "type": "query",
+                "description": "Restrict the results to locations with flights operated by LH (false=0, true=1)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all airports or one specific airport. All airports response is very large. It is possible to request the response in a specific language."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Nearest Airports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/airports/nearest/:latitude,:longitude",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path",
+                "description": "Latitude in decimal format to at most 3 decimal places"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path",
+                "description": "Longitude in decimal format to at most 3 decimal places"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "2 letter ISO 3166-1 language code"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List the 5 closest airports to the given latitude and longitude, irrespective of the radius of the reference point."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Airlines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/airlines/:airlineCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "airlineCode",
+                "value": "",
+                "type": "path",
+                "description": "2-character IATA airline/carrier code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records skipped. Defaults to 0"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all airlines or one specific airline."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Aircraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/references/aircraft/:aircraftCode",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aircraftCode",
+                "value": "",
+                "type": "path",
+                "description": "3-character IATA aircraft code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records skipped. Defaults to 0"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all aircraft types or one specific aircraft type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

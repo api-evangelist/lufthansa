@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "a4614eab-43e0-445c-8811-eb5635c83473",
+      "name": "Offers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21445fe8-7cea-4440-96f2-ee583bafaa4a",
+          "name": "Lufthansa Seat Maps",
+          "request": {
+            "name": "Lufthansa Seat Maps",
+            "description": {
+              "content": "Cabin layout and seat characteristics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offers",
+                "seatmaps",
+                ":flightNumber",
+                ":origin",
+                ":destination",
+                ":date",
+                ":cabinClass"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flightNumber",
+                  "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH2037')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "origin",
+                  "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destination",
+                  "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Departure date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cabinClass",
+                  "description": "(Required) Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f2d062e-be46-4a65-a7f7-dc1a2e0c21da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offers",
+                    "seatmaps",
+                    ":flightNumber",
+                    ":origin",
+                    ":destination",
+                    ":date",
+                    ":cabinClass"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flightNumber",
+                      "description": "(Required) Flight number including carrier code and any suffix (e.g. 'LH2037')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "origin",
+                      "description": "(Required) Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Departure date (YYYY-MM-DD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cabinClass",
+                      "description": "(Required) Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca6e70d9-1193-4c6f-add9-2b080e22b23e",
+          "name": "Lufthansa Lounges",
+          "request": {
+            "name": "Lufthansa Lounges",
+            "description": {
+              "content": "Lounge information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offers",
+                "lounges",
+                ":location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cabinClass",
+                  "value": "<string>",
+                  "description": "Cabin class: 'M', 'E', 'C', 'F' (Acceptable values are: \"\", \"M\", \"E\", \"C\", \"F\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "tierCode",
+                  "value": "<string>",
+                  "description": "Frequent flyer level ('FTL', 'SGC', 'SEN', 'HON') (Acceptable values are: \"\", \"FTL\", \"SGC\", \"SEN\", \"HON\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Language code."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) 3-leter IATA airport or city code (e.g. 'ZRH')"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3c01373-54dd-44e5-addc-b8a55dd5a33f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offers",
+                    "lounges",
+                    ":location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cabinClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tierCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) 3-leter IATA airport or city code (e.g. 'ZRH')"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.lufthansa.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "566303aa-1cd2-4307-b339-c65f47c587d8",
+    "name": "Lufthansa LH Public Cargo Offers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

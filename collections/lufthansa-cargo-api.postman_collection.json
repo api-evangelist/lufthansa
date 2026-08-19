@@ -1,0 +1,320 @@
+{
+  "item": [
+    {
+      "id": "bb6d45e8-30cb-435d-9e99-4ec4eb47200a",
+      "name": "Cargo",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b280d1bf-2dc1-4dea-9605-244af5383705",
+          "name": "Lufthansa Shipment Tracking",
+          "request": {
+            "name": "Lufthansa Shipment Tracking",
+            "description": {
+              "content": "With this tracking service you can easily retrieve your shipment or flight status information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cargo",
+                "shipmentTracking",
+                "{{aWBPrefix}}-{{aWBNumber}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d0ca47a-1b8f-4317-8744-d8b83c1e549f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cargo",
+                    "shipmentTracking",
+                    "{{aWBPrefix}}-{{aWBNumber}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1015c6a-5e90-4b99-b114-44c41099643e",
+          "name": "Lufthansa Retrieve all flights",
+          "request": {
+            "name": "Lufthansa Retrieve all flights",
+            "description": {
+              "content": "Retrieve a list of all possible flights (both direct and connecting) between two airports on a given date. Routes are available for today and up to days in the future.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cargo",
+                "getRoute",
+                "{{origin}}-{{destination}}",
+                ":fromDate",
+                ":productCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fromDate",
+                  "description": "(Required) Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code for requested service and specials : 3-letter eg: YNZ"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:LH Open API"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.lufthansa.com/v1/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "31bc0435-5bd1-4e02-91fc-8f4403501fa4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cargo",
+                    "getRoute",
+                    "{{origin}}-{{destination}}",
+                    ":fromDate",
+                    ":productCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fromDate",
+                      "description": "(Required) Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code for requested service and specials : 3-letter eg: YNZ"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.lufthansa.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) aWBPrefix : Represents the airline that is the owner of this AWB, i.e. \"020\" = Lufthansa Cargo, format : [0-9]{3} e.g. 020",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "aWBPrefix"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "aWBNumber"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Departure Airport : 3-letter IATA airport code, e.g. FRA.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "origin"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Arrival airport : 3-letter IATA airport code, e.g. HKG.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "destination"
+    }
+  ],
+  "info": {
+    "_postman_id": "0718dd84-61db-474f-9d69-2876791a1eb7",
+    "name": "Lufthansa LH Public Cargo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

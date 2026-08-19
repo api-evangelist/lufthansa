@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lufthansa LH Public Cargo Offers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lufthansa Seat Maps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/offers/seatmaps/:flightNumber/:origin/:destination/:date/:cabinClass",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "flightNumber",
+                "value": "",
+                "type": "path",
+                "description": "Flight number including carrier code and any suffix (e.g. 'LH2037')"
+              },
+              {
+                "name": "origin",
+                "value": "",
+                "type": "path",
+                "description": "Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+              },
+              {
+                "name": "destination",
+                "value": "",
+                "type": "path",
+                "description": "Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Departure date (YYYY-MM-DD)"
+              },
+              {
+                "name": "cabinClass",
+                "value": "",
+                "type": "path",
+                "description": "Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Cabin layout and seat characteristics."
+        },
+        {
+          "info": {
+            "name": "Lufthansa Lounges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lufthansa.com/v1/offers/lounges/:location",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "path",
+                "description": "3-leter IATA airport or city code (e.g. 'ZRH')"
+              },
+              {
+                "name": "cabinClass",
+                "value": "",
+                "type": "query",
+                "description": "Cabin class: 'M', 'E', 'C', 'F' (Acceptable values are: \"\", \"M\", \"E\", \"C\", \"F\")"
+              },
+              {
+                "name": "tierCode",
+                "value": "",
+                "type": "query",
+                "description": "Frequent flyer level ('FTL', 'SGC', 'SEN', 'HON') (Acceptable values are: \"\", \"FTL\", \"SGC\", \"SEN\", \"HON\")"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language code."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "accessTokenUrl": "https://api.lufthansa.com/v1/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Lounge information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
