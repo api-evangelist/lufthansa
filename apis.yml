@@ -92,6 +92,11 @@ apis:
   humanURL: https://developer.lufthansa.com
   baseURL: https://api.lufthansa.com/v1
   tags:
+  - Notification
+  - JWT
+  - Webhook
+  - Flight Updates
+  tags_raw:
   - Notifications
   - JWT
   - Webhooks
@@ -138,7 +143,8 @@ apis:
   description: The Operations API from Lufthansa — 5 operation(s) for operations.
   humanURL: https://developer.lufthansa.com
   baseURL: https://api.lufthansa.com/v1
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
