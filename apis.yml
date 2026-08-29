@@ -184,6 +184,9 @@ apis:
   - type: Authentication
     url: https://developer.lufthansa.com/docs/read/Authentication
 common:
+  - type: CapabilityMap
+    url: capabilities/lufthansa-capability-edges.yml
+    name: Lufthansa Business Capability Map
   - type: AgenticAccess
     url: agentic-access/lufthansa-agentic-access.yml
   - type: DomainSecurity
