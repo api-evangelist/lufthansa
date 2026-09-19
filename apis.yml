@@ -53,6 +53,12 @@ apis:
   humanURL: https://developer.lufthansa.com
   baseURL: https://api.lufthansa.com/v1
   tags:
+  - Partners
+  - NDC
+  - Fares
+  - Pricing
+  - Offers
+  tags_raw:
   - Partner
   - NDC
   - Fares
