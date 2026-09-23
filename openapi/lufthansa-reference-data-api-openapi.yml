@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Lufthansa LH Public Cargo Reference Data API
+  title: Lufthansa LH Public Reference Data API
   description: ''
   license:
     name: LH
@@ -321,6 +321,27 @@ paths:
         IsMultiContentStreaming: false
 components:
   schemas:
+    Coordinate:
+      type: object
+      properties:
+        Latitude:
+          type: number
+          description: 'Decimal latitude. Range: -90 (South Pole) to +90 (North Pole), e.g. “51.540”.'
+          format: float
+        Longitude:
+          type: number
+          description: 'Decimal longitude. Range: -180 (West of Prime Meridian) to +180 (East of Prime Meridian).'
+          format: float
+      description: Container for coordinates.
+    Link:
+      type: object
+      properties:
+        '@Href':
+          type: string
+          description: Link to actual a resource.
+        '@Rel':
+          type: string
+          description: Specifying kind of link such as ‘self’ (link that returned this response), ‘alternate’ (link that points to another resource) or ‘related’ (link that points to related resource).
     AirportResponse:
       type: object
       properties:
@@ -364,6 +385,14 @@ components:
           type: string
           description: Time zone name airport is in
       description: Array of all available airports or one airport matching the request.
+    Name:
+      type: object
+      properties:
+        '@LanguageCode':
+          type: string
+        $:
+          type: string
+      description: 2-letter ISO 639-1 language code for the corresponding item.
     AirportResource:
       type: object
       properties:
@@ -388,35 +417,6 @@ components:
               format: int32
           description: Container for meta links.
       description: Root element of airport response.
-    Name:
-      type: object
-      properties:
-        '@LanguageCode':
-          type: string
-        $:
-          type: string
-      description: 2-letter ISO 639-1 language code for the corresponding item.
-    Coordinate:
-      type: object
-      properties:
-        Latitude:
-          type: number
-          description: 'Decimal latitude. Range: -90 (South Pole) to +90 (North Pole), e.g. “51.540”.'
-          format: float
-        Longitude:
-          type: number
-          description: 'Decimal longitude. Range: -180 (West of Prime Meridian) to +180 (East of Prime Meridian).'
-          format: float
-      description: Container for coordinates.
-    Link:
-      type: object
-      properties:
-        '@Href':
-          type: string
-          description: Link to actual a resource.
-        '@Rel':
-          type: string
-          description: Specifying kind of link such as ‘self’ (link that returned this response), ‘alternate’ (link that points to another resource) or ‘related’ (link that points to related resource).
   securitySchemes:
     auth:
       type: oauth2

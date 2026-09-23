@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Lufthansa LH Public Cargo Operations API
+  title: Lufthansa LH Public Operations API
   description: ''
   license:
     name: LH

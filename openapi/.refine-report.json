@@ -1,10 +1,7 @@
 {
   "provider": "lufthansa",
   "sources": [
-    "lufthansa-cargo-api-openapi.yml",
-    "lufthansa-offers-api-openapi.yml",
-    "lufthansa-operations-api-openapi.yml",
-    "lufthansa-reference-data-api-openapi.yml"
+    "_original/lufthansa-openapi.yml"
   ],
   "outputs": [
     "lufthansa-cargo-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lufthansa-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "lufthansa-cargo-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lufthansa-offers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lufthansa-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lufthansa-reference-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
