@@ -30,6 +30,9 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lufthansa.
 kind: contract
 position: Consuming
 access: 3rd-Party
+x-docs-platform: swagger-ui
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
 tags:
   - Airlines
   - Travel
