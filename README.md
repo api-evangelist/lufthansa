@@ -1,4 +1,4 @@
-# Lufthansa (lufthansa)
+# Lufthansa
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,147 +66,161 @@
 
 The Lufthansa Group is a global aviation group that plays a leading role in its European home market. The Lufthansa Open API developer portal exposes reference data, flight operations, offers, notifications, and cargo APIs secured with OAuth2 for partner and public consumers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/lufthansa/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/lufthansa/refs/heads/main/apis.yml)
+**Areas:** Airlines · Travel · Aviation · Flights
 
-## Scope
+## Lufthansa on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Lufthansa is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lufthansa/](https://apis.io/providers/lufthansa/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Airlines
-- Travel
-- Aviation
-- Flights
+- [Lufthansa Partner API](https://apis.io/apis/lufthansa/partner-api/) — The Lufthansa Partner API exposes deeplinks, fares, pricing offers, and seat details for integration partners. NDC capabilities including Smart Offer, NDC…
+- [Lufthansa FlightOps and Crew API](https://apis.io/apis/lufthansa/flightops-crew/) — The FlightOps and Crew API provides crew-specific services including check-in times, duty events, and weather information for operational use cases.
+- [Lufthansa Cargo API](https://apis.io/apis/lufthansa/cargo/) — The Lufthansa Cargo API provides shipment tracking and LH CARGO flight routings.
+- [Lufthansa Notifications API](https://apis.io/apis/lufthansa/notifications/) — The Notifications API delivers FlightUpdate notifications and JWT-based authentication tokens for streaming flight events.
+- [Lufthansa Cargo API](https://apis.io/apis/lufthansa/lufthansa-cargo-api/) — The Cargo API from Lufthansa — 2 operation(s) for cargo.
+- [Lufthansa Offers API](https://apis.io/apis/lufthansa/lufthansa-offers-api/) — The Offers API from Lufthansa — 2 operation(s) for offers.
+- [Lufthansa Operations API](https://apis.io/apis/lufthansa/lufthansa-operations-api/) — The Operations API from Lufthansa — 5 operation(s) for operations.
+- [Lufthansa Reference Data API](https://apis.io/apis/lufthansa/lufthansa-reference-data-api/) — The Reference Data API from Lufthansa — 6 operation(s) for reference data.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-07-02
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Lufthansa Public API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Lufthansa Public API provides reference data for countries, cities, airports, airlines, and aircraft, plus flight schedules and real-time flight status by route, arrival airport, or departure airport, customer flight information, seat maps, and lounge data.
+- [Lufthansa Agentic Access](https://apis.io/agentic-access/lufthansa/lufthansa-agentic-access/)
 
-- **Human URL:** [https://developer.lufthansa.com](https://developer.lufthansa.com)
-- **Base URL:** `https://api.lufthansa.com/v1`
+#### JSON Schema (6)
 
-#### Tags
+The data models the API reads and writes.
 
-- Airlines
-- Flights
-- Reference Data
-- Flight Status
-- Seat Maps
-- Lounges
+- [Airport](https://apis.io/schemas/lufthansa/lufthansa-airport/)
+- [AirportResource](https://apis.io/schemas/lufthansa/lufthansa-airportresource/)
+- [AirportResponse](https://apis.io/schemas/lufthansa/lufthansa-airportresponse/)
+- [Coordinate](https://apis.io/schemas/lufthansa/lufthansa-coordinate/)
+- [Link](https://apis.io/schemas/lufthansa/lufthansa-link/)
+- [Name](https://apis.io/schemas/lufthansa/lufthansa-name/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Portal](https://developer.lufthansa.com)
-- [Authentication](https://developer.lufthansa.com/docs/read/Authentication)
-- [OpenAPI](openapi/lufthansa-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/lufthansa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/lufthansa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### Lufthansa Partner API
+- [Lufthansa Structure](https://apis.io/json-structure/lufthansa/lufthansa-structure/)
 
-The Lufthansa Partner API exposes deeplinks, fares, pricing offers, and seat details for integration partners. NDC capabilities including Smart Offer, NDC Bonus, Servicing, and Technology are part of the partner program.
+#### Vocabulary (1)
 
-- **Human URL:** [https://developer.lufthansa.com](https://developer.lufthansa.com)
-- **Base URL:** `https://api.lufthansa.com/v1`
+The provider's domain terms, defined.
 
-#### Tags
+- [Lufthansa Domain Vocabulary](https://apis.io/vocabularies/lufthansa/lufthansa-vocabulary/)
 
-- Partner
-- NDC
-- Fares
-- Pricing
-- Offers
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Portal](https://developer.lufthansa.com)
-- [Postman Collection](collections/lufthansa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/lufthansa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Lufthansa LH Public API](https://apis.io/collections/lufthansa/open-lufthansa/)
+- [Lufthansa LH Public Cargo API](https://apis.io/collections/lufthansa/open-lufthansa-cargo-api/)
+- [Lufthansa LH Public Cargo Offers API](https://apis.io/collections/lufthansa/open-lufthansa-offers-api/)
+- [Lufthansa LH Public Cargo Operations API](https://apis.io/collections/lufthansa/open-lufthansa-operations-api/)
+- [Lufthansa LH Public Cargo Reference Data API](https://apis.io/collections/lufthansa/open-lufthansa-reference-data-api/)
 
-### Lufthansa FlightOps and Crew API
+#### Governance rules (1)
 
-The FlightOps and Crew API provides crew-specific services including check-in times, duty events, and weather information for operational use cases.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://developer.lufthansa.com](https://developer.lufthansa.com)
-- **Base URL:** `https://api.lufthansa.com/v1`
+- [Lufthansa — jsonschema rules](https://apis.io/rules/lufthansa/lufthansa-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (2)
 
-- Crew
-- Flight Operations
-- Weather
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Lufthansa Authentication](https://apis.io/security/lufthansa/lufthansa-authentication/)
+- [Lufthansa Domain Security](https://apis.io/security/lufthansa/lufthansa-domain-security/)
 
-- [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Portal](https://developer.lufthansa.com)
-- [Postman Collection](collections/lufthansa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/lufthansa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-### Lufthansa Cargo API
+The permissions the API asks for.
 
-The Lufthansa Cargo API provides shipment tracking and LH CARGO flight routings.
+- [Lufthansa Scopes](https://apis.io/scopes/lufthansa/lufthansa-scopes/)
 
-- **Human URL:** [https://developer.lufthansa.com](https://developer.lufthansa.com)
-- **Base URL:** `https://api.lufthansa.com/v1`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Cargo
-- Shipment Tracking
-- Logistics
+- [Lufthansa Plans Pricing](https://apis.io/plans/lufthansa/lufthansa-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Portal](https://developer.lufthansa.com)
-- [Postman Collection](collections/lufthansa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/lufthansa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Lufthansa Notifications API
+- [Lufthansa Rate Limits](https://apis.io/rate-limits/lufthansa/lufthansa-rate-limits/)
 
-The Notifications API delivers FlightUpdate notifications and JWT-based authentication tokens for streaming flight events.
+#### FinOps (1)
 
-- **Human URL:** [https://developer.lufthansa.com](https://developer.lufthansa.com)
-- **Base URL:** `https://api.lufthansa.com/v1`
+What the API costs to run, by operation.
 
-#### Tags
+- [Lufthansa Finops](https://apis.io/finops/lufthansa/lufthansa-finops/)
 
-- Notifications
-- JWT
-- Webhooks
-- Flight Updates
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Portal](https://developer.lufthansa.com)
-- [Postman Collection](collections/lufthansa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/lufthansa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/lufthansa)
-- [LinkedIn](https://www.linkedin.com/company/lufthansa)
 - [Website](https://www.lufthansagroup.com)
-- [Portal](https://developer.lufthansa.com)
 - [Documentation](https://developer.lufthansa.com/docs/read/api_details)
-- [Authentication](https://developer.lufthansa.com/docs/read/Authentication)
-- [Sign Up](https://developer.lufthansa.com/user/register)
-- [Terms of Service](https://developer.lufthansa.com/docs/read/General_Terms_and_Conditions)
+- [Terms of service](https://developer.lufthansa.com/docs/read/General_Terms_and_Conditions)
+- [GitHub](https://github.com/lufthansa)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 45.8 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 26.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lufthansa/](https://apis.io/providers/lufthansa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lufthansa: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lufthansa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
